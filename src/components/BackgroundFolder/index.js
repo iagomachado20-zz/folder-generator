@@ -7,7 +7,7 @@ const url = 'https://images.unsplash.com/photo-1569982175971-d92b01cf8694?ixlib=
 
 const BackgroundFolder = () => {
 
-    const [image] = useImage(url);
+    const [image] = useImage(url, 'Anonymous');
 
     return (
         <Layer>

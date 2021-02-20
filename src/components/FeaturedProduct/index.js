@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Rect, Image } from 'react-konva';
+import { Text, Rect, Image, Layer } from 'react-konva';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import useImage from 'use-image';
 
@@ -7,7 +7,7 @@ const url = 'https://cdn.pixabay.com/photo/2016/09/20/07/25/food-1681977_960_720
 
 const FeaturedProduct = ({  text, image, price, type }) => {
 
-    const [productImage] = useImage(image);
+    const [productImage] = useImage(image, 'Anonymous');
 
     return (
         <React.Fragment>
@@ -49,7 +49,7 @@ const FeaturedProduct = ({  text, image, price, type }) => {
             {/* Preço */}
             <Text
                 fontSize={30}
-                zIndex={51}
+                zIndex={10}
                 fill="yellow"
                 stroke="red"
                 width={90}
@@ -59,12 +59,12 @@ const FeaturedProduct = ({  text, image, price, type }) => {
                 x={CONFIGS_FOLDER.featuredProduct.size - 110} text={price}/> 
             <Text
                 fontSize={10}
-                zIndex={50}
+                zIndex={10}
                 width={50}
                 align="right"
                 fill="white"
                 y={CONFIGS_FOLDER.featuredProduct.size - 18} 
-                x={CONFIGS_FOLDER.featuredProduct.size - 70} text={type}/>     
+                x={CONFIGS_FOLDER.featuredProduct.size - 70} text={type}/>        
             <Rect
                 x={CONFIGS_FOLDER.featuredProduct.size - 100}
                 cornerRadius={10}

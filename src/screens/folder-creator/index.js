@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Layer, Stage, Text } from 'react-konva';
 import { BackgroundFolder, FeaturedProduct } from '../../components';
 import { CONFIGS_FOLDER } from '../../config/constants';
@@ -31,9 +31,17 @@ const FEATUREDS_PRODUCTS = [
     }
 ];
 
+function downloadURI(uri, name) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    link.click();
+}
+
 function FolderCreatorPage() {
 
-    const [ featureds, setFeatureds ] = [FEATUREDS_PRODUCTS];
+    const [ featureds, setFeatured ] = useState(FEATUREDS_PRODUCTS);
+    const stageRef = useRef(null);
 
     const calcPositionFeaturedsCard = (index) => {
 
@@ -45,9 +53,20 @@ function FolderCreatorPage() {
 
     };
 
+    const handleExport = () => {
+        const uri = stageRef.current.toDataURL();
+        console.log(uri);
+        // we also can save uri as file
+        // but in the demo on Konva website it will not work
+        // because of iframe restrictions
+        // but feel free to use it in your apps:
+        downloadURI(uri, 'stage.png');
+    };
+
+
     return (
         <Container>
-            <Stage width={CONFIGS_FOLDER.size} height={CONFIGS_FOLDER.size}>
+            <Stage width={CONFIGS_FOLDER.size} height={CONFIGS_FOLDER.size} ref={stageRef}>
                 <BackgroundFolder/>
                 {/* Destaques */}
                 { featureds.map((featured, index) => 
@@ -63,6 +82,8 @@ function FolderCreatorPage() {
                 }
                 
             </Stage>
+            <button onClick={() => handleExport()}>Exportar</button>
+            <button onClick={() => setFeatured([])}>Remover</button>
         </Container>
     )
 }
