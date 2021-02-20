@@ -19,8 +19,8 @@ function Routes() {
     return (
         <Router>
             <Switch>
-                { MAP_ROUTES.map(route => 
-                    <Route path={route.key}>
+                { MAP_ROUTES.map((route, index) => 
+                    <Route path={route.key} key={index}>
                         {route.component}
                     </Route>    
                 )}     
