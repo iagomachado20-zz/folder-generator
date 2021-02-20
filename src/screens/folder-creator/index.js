@@ -63,6 +63,17 @@ function FolderCreatorPage() {
         downloadURI(uri, 'stage.png');
     };
 
+    const modifiyItem = () => {
+
+        const list = featureds.map(featured => {
+            featured.text = 'Hugo';
+            return featured;
+        });
+
+        setFeatured(list);
+
+    };
+
 
     return (
         <Container>
@@ -83,7 +94,7 @@ function FolderCreatorPage() {
                 
             </Stage>
             <button onClick={() => handleExport()}>Exportar</button>
-            <button onClick={() => setFeatured([])}>Remover</button>
+            <button onClick={() => modifiyItem()}>Remover</button>
         </Container>
     )
 }
