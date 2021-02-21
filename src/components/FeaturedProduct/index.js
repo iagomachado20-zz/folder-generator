@@ -1,24 +1,29 @@
 import React from 'react';
-import { Text, Rect, Image, Layer } from 'react-konva';
+import { Text, Rect, Image } from 'react-konva';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import useImage from 'use-image';
+import PriceNumber from '../PriceNumber';
 
 const url = 'https://cdn.pixabay.com/photo/2016/09/20/07/25/food-1681977_960_720.png';
 
 const FeaturedProduct = ({  text, image, price, type }) => {
 
     const [productImage] = useImage(image, 'Anonymous');
-
     return (
         <React.Fragment>
             {/* Background */}
             <Rect
                 x={0}
+                shadowColor="#c7c50f"
+                shadowBlur={1}
+                shadowOpacity={1}
+                shadowOffsetX={-10}
+                shadowOffsetY={5}
                 cornerRadius={10}
                 y={0}
                 width={CONFIGS_FOLDER.featuredProduct.size}
                 height={CONFIGS_FOLDER.featuredProduct.size}
-                fill="yellow"
+                fill="#e5e202"
             />
             {/* Descrição */}
             <Text 
@@ -37,41 +42,39 @@ const FeaturedProduct = ({  text, image, price, type }) => {
             {/* Flag */}        
             <Text
                 fontSize={18}
-                zIndex={5}
-                fill="red"
-                strokeWidth={1.2}
+                zIndex={2}
+                fill="white"
+                strokeWidth={2}
                 rotation={-20}
                 stroke="red"
                 strokeScaleEnabled
-                y={CONFIGS_FOLDER.featuredProduct.size - 30} 
+                fontFamily="'Sigmar One', cursive"
+                y={CONFIGS_FOLDER.featuredProduct.size - 25} 
                 x={5} text="IMBATÍVEL"/> 
 
             {/* Preço */}
-            <Text
-                fontSize={30}
-                zIndex={10}
-                fill="yellow"
-                stroke="red"
-                width={90}
-                strokeWidth={1}
-                align="right"
-                y={CONFIGS_FOLDER.featuredProduct.size - 45} 
-                x={CONFIGS_FOLDER.featuredProduct.size - 110} text={price}/> 
+            <PriceNumber price={price}/>
             <Text
                 fontSize={10}
-                zIndex={10}
+                zIndex={35}
                 width={50}
                 align="right"
+                fontFamily="'Montserrat', sans-serif"
                 fill="white"
                 y={CONFIGS_FOLDER.featuredProduct.size - 18} 
-                x={CONFIGS_FOLDER.featuredProduct.size - 70} text={type}/>        
+                x={CONFIGS_FOLDER.featuredProduct.size - 55} text={type}/>        
             <Rect
-                x={CONFIGS_FOLDER.featuredProduct.size - 100}
+                x={CONFIGS_FOLDER.featuredProduct.size - 110}
                 cornerRadius={10}
-                y={CONFIGS_FOLDER.featuredProduct.size - 62}
+                y={CONFIGS_FOLDER.featuredProduct.size - 50}
                 zIndex={10}
-                width={100}
-                height={60}
+                shadowColor="#a00d0d"
+                shadowBlur={1}
+                shadowOpacity={1}
+                shadowOffsetX={-5}
+                shadowOffsetY={2}
+                width={110}
+                height={45}
                 fill="red"
             />        
         </React.Fragment>

@@ -83,10 +83,7 @@ function FolderCreatorPage() {
                 { featureds.map((featured, index) => 
                     <Layer key={index} x={calcPositionFeaturedsCard(index)} y={CONFIGS_FOLDER.position_initial_products.y}>
                         <FeaturedProduct
-                            type={featured.type} 
-                            text={featured.text}
-                            image={featured.image} 
-                            price={featured.price} 
+                            {...featured}
                         />
                     </Layer>
                     )
