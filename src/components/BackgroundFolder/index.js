@@ -10,14 +10,12 @@ const BackgroundFolder = () => {
     const [image] = useImage(url, 'Anonymous');
 
     return (
-        <Layer>
-            <Image 
-                x={0} 
-                left={0} 
-                image={image} 
-                width={CONFIGS_FOLDER.size}
-                height={CONFIGS_FOLDER.size} />
-        </Layer>
+        <Image 
+            x={0} 
+            left={0} 
+            image={image} 
+            width={CONFIGS_FOLDER.size}
+            height={CONFIGS_FOLDER.size} />
     )
 };  
 

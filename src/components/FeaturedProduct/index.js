@@ -1,16 +1,16 @@
 import React from 'react';
-import { Text, Rect, Image } from 'react-konva';
+import { Text, Rect, Image, Group } from 'react-konva';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import useImage from 'use-image';
 import PriceNumber from '../PriceNumber';
 
-const url = 'https://cdn.pixabay.com/photo/2016/09/20/07/25/food-1681977_960_720.png';
-
 const FeaturedProduct = ({  text, image, price, type }) => {
 
     const [productImage] = useImage(image, 'Anonymous');
+
     return (
         <React.Fragment>
+
             {/* Background */}
             <Rect
                 x={0}
@@ -32,6 +32,7 @@ const FeaturedProduct = ({  text, image, price, type }) => {
                 align="center"
                 x={0}
                 lineHeight={1.5}
+                fontFamily="'Montserrat', sans-serif"
                 fill="black"
                 text={text} fontSize={16}/>
             {/* Imagem */}    
@@ -53,30 +54,25 @@ const FeaturedProduct = ({  text, image, price, type }) => {
                 x={5} text="IMBATÍVEL"/> 
 
             {/* Preço */}
-            <PriceNumber price={price}/>
-            <Text
-                fontSize={10}
-                zIndex={35}
-                width={50}
-                align="right"
-                fontFamily="'Montserrat', sans-serif"
-                fill="white"
-                y={CONFIGS_FOLDER.featuredProduct.size - 18} 
-                x={CONFIGS_FOLDER.featuredProduct.size - 55} text={type}/>        
-            <Rect
-                x={CONFIGS_FOLDER.featuredProduct.size - 110}
-                cornerRadius={10}
-                y={CONFIGS_FOLDER.featuredProduct.size - 50}
-                zIndex={10}
-                shadowColor="#a00d0d"
-                shadowBlur={1}
-                shadowOpacity={1}
-                shadowOffsetX={-5}
-                shadowOffsetY={2}
-                width={110}
-                height={45}
-                fill="red"
-            />        
+            <Group>
+
+                <PriceNumber price={price} type={type}/>
+                   
+                <Rect
+                    x={CONFIGS_FOLDER.featuredProduct.size - 110}
+                    cornerRadius={10}
+                    y={CONFIGS_FOLDER.featuredProduct.size - 50}
+                    zIndex={1}
+                    shadowColor="#a00d0d"
+                    shadowBlur={1}
+                    shadowOpacity={1}
+                    shadowOffsetX={-5}
+                    shadowOffsetY={2}
+                    width={110}
+                    height={45}
+                    fill="red"
+                /> 
+            </Group>       
         </React.Fragment>
     )
 };  

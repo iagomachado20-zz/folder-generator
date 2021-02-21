@@ -1,14 +1,15 @@
 import React, { useRef, useState } from 'react';
-import { Layer, Stage, Text } from 'react-konva';
-import { BackgroundFolder, FeaturedProduct } from '../../components';
+import { Group, Layer, Stage } from 'react-konva';
+import { BackgroundFolder, FeaturedProduct, LogoFolder, ProductCard, TitleFolder } from '../../components';
 import { CONFIGS_FOLDER } from '../../config/constants';
+import { calcPositionFeaturedsCard, calcPositionProducts } from '../../helpers/positions_elements';
 import { Container } from '../../styles/components';
 
 const FEATUREDS_PRODUCTS = [
     {
-        image: 'https://cdn.pixabay.com/photo/2016/09/20/07/25/food-1681977_960_720.png',
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
         text: 'Maçã',
-        price: 10.99,
+        price: 4.99,
         type: 'KG'
     },
     {
@@ -18,17 +19,69 @@ const FEATUREDS_PRODUCTS = [
         type: 'KG'
     },
     {
-        image: 'https://cdn.pixabay.com/photo/2016/09/20/07/25/food-1681977_960_720.png',
-        text: 'Vodka',
-        price: 4.99,
-        type: 'CADA'
-    },
-    {
-        image: 'https://cdn.pixabay.com/photo/2016/09/20/07/25/food-1681977_960_720.png',
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
         text: 'Maçã',
         price: 4.99,
-        type: 'CADA'
+        type: 'KG'
+    },
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
     }
+];
+
+
+const PRODUCTS = [
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
+    },
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
+    },
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
+    },
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
+    },
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
+    },
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
+    },
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
+    },
+    {
+        image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+        text: 'Maçã',
+        price: 4.99,
+        type: 'KG'
+    },
 ];
 
 function downloadURI(uri, name) {
@@ -41,57 +94,55 @@ function downloadURI(uri, name) {
 function FolderCreatorPage() {
 
     const [ featureds, setFeatured ] = useState(FEATUREDS_PRODUCTS);
+    const [ products, setProducts ] = useState(PRODUCTS);
     const stageRef = useRef(null);
 
-    const calcPositionFeaturedsCard = (index) => {
-
-        const { gap, size } = CONFIGS_FOLDER.featuredProduct;
-
-        const calc = (size * index) + (gap * index);
-
-        return calc;
-
-    };
 
     const handleExport = () => {
         const uri = stageRef.current.toDataURL();
-        console.log(uri);
         // we also can save uri as file
         // but in the demo on Konva website it will not work
         // because of iframe restrictions
         // but feel free to use it in your apps:
-        downloadURI(uri, 'stage.png');
-    };
-
-    const modifiyItem = () => {
-
-        const list = featureds.map(featured => {
-            featured.text = 'Hugo';
-            return featured;
-        });
-
-        setFeatured(list);
-
+        downloadURI(uri, 'folder-exportado.png');
     };
 
 
     return (
         <Container>
+            <header className="heading">
+                <h1>Gerador de Folder</h1>
+                <p>Selecione os produtos que deseja inserir no folder</p>
+            </header>
+            
             <Stage width={CONFIGS_FOLDER.size} height={CONFIGS_FOLDER.size} ref={stageRef}>
-                <BackgroundFolder/>
-                {/* Destaques */}
-                { featureds.map((featured, index) => 
-                    <Layer key={index} x={calcPositionFeaturedsCard(index)} y={CONFIGS_FOLDER.position_initial_products.y}>
-                        <FeaturedProduct
-                            {...featured}
-                        />
-                    </Layer>
-                    )
-                }
+                <Layer zIndex={0}>
+                    <BackgroundFolder/>
+                </Layer>
+                <Layer x={0} y={0} zIndex={1}>
+                    <Group x={0} y={0}>
+                        <LogoFolder/>
+                        <TitleFolder/>
+                    </Group>
+                    
+                    {/* Destaques */}
+                    { featureds.map((featured, index) => 
+                            <Group key={index} x={calcPositionFeaturedsCard(index)} y={CONFIGS_FOLDER.position_initial_products.y}>
+                                <FeaturedProduct {...featured} />
+                            </Group>
+                        )
+                    }
+                    { products.map((product, index) => 
+                        <Group key={index} x={calcPositionProducts(index).x} y={calcPositionProducts(index).y}>
+                            <ProductCard {...product} />
+                        </Group>
+                    )   
+                    }
+                </Layer>
+                
                 
             </Stage>
             <button onClick={() => handleExport()}>Exportar</button>
-            <button onClick={() => modifiyItem()}>Remover</button>
         </Container>
     )
 }
