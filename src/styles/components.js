@@ -6,12 +6,22 @@ export const Container = styled.div`
     display: block;
     max-width: 1048px;
     .heading {
+        background-color: #fff;
+        padding: 25px;
         h1 {
             margin-bottom: 0;
         }
         p {
             margin-top: 5px;
         }
-        margin-bottom: 40px;
+    }
+    .actions {
+        padding: 14px 25px;
+        display: flex;
+        align-items: center;
+        background: #efefef;
+        > div {
+            margin-right: 2.5%;
+        }
     }
 `

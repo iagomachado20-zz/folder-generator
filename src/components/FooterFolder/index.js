@@ -1,12 +1,11 @@
 import React from 'react';
-import FooterImage from '../../assets/rodape.png';
 import { Image } from 'react-konva';
 import useImage from 'use-image';
 import { CONFIGS_FOLDER } from '../../config/constants';
 
-const FooterFolder = () => {
+const FooterFolder = ({ url }) => {
 
-    const [imageFooter] = useImage(FooterImage, 'Anonymous');
+    const [imageFooter] = useImage(url, 'Anonymous');
 
     return (
         <Image 

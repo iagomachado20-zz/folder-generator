@@ -8,7 +8,7 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
 
     return (
         <React.Fragment>
-            <Group zIndex={1}>
+            <Group zIndex={2}>
                 <Text
                     fontSize={10}
                     width={20}
@@ -25,7 +25,7 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                     strokeWidth={3}
                     letterSpacing={-2}
                     align="right"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 70} 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 80} 
                     fontFamily="'Sigmar One', cursive"
                     x={CONFIGS_FOLDER.featuredProduct.size - 180} text={priceFormated[0]}/>
                 <Text
@@ -36,16 +36,16 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                     width={110}
                     strokeWidth={3}
                     align="right"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 70} 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 80} 
                     fontFamily="'Sigmar One', cursive"
-                    x={CONFIGS_FOLDER.featuredProduct.size - 130} text={',' + priceFormated[1]}/> 
+                    x={CONFIGS_FOLDER.featuredProduct.size - 115} text={',' + priceFormated[1]}/> 
                 <Text
                     fontSize={10}
                     width={50}
                     align="right"
                     fontFamily="'Montserrat', sans-serif"
                     fill="black"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 40} 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 50} 
                     x={CONFIGS_FOLDER.featuredProduct.size - 60} text={type}/> 
             </Group>             
         </React.Fragment>

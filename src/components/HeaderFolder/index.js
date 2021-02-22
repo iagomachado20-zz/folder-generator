@@ -4,9 +4,9 @@ import { Image } from 'react-konva';
 import useImage from 'use-image';
 import { CONFIGS_FOLDER } from '../../config/constants';
 
-const HeaderFolder = () => {
+const HeaderFolder = ({url}) => {
 
-    const [imageLogo] = useImage(HeaderImage, 'Anonymous');
+    const [imageLogo] = useImage(url, 'Anonymous');
 
     return (
         <Image 

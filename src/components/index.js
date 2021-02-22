@@ -6,6 +6,7 @@ import LogoFolder from './Logo';
 import TitleFolder from './TitleFolder';
 import HeaderFolder from './HeaderFolder';
 import FooterFolder from './FooterFolder';
+import UploadFolderButton from './UploadFolderButton';
 
 export {
     BackgroundFolder,
@@ -15,5 +16,6 @@ export {
     LogoFolder,
     TitleFolder,
     HeaderFolder,
-    FooterFolder
+    FooterFolder,
+    UploadFolderButton
 }

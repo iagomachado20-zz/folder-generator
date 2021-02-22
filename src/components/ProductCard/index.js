@@ -22,26 +22,24 @@ const ProductCard = ({  text, image, price, type }) => {
                 strokeWidth={0.4}
                 fill="white"
                 fontFamily="'Montserrat', sans-serif"
-                text={text} fontSize={16}/>
+                text={text} fontSize={16}/>      
             {/* Imagem */}    
-            <Image zIndex={1} y={60} image={productImage} x={50}  left={50} 
+            <Image zIndex={1} y={50} image={productImage} x={50}  left={50} 
                 width={CONFIGS_FOLDER.featuredProduct.image} 
-                height={CONFIGS_FOLDER.featuredProduct.image}/>       
-
+                height={CONFIGS_FOLDER.featuredProduct.image}/>  
             {/* Preço */}
-            <Group zIndex={2}>
-                <PriceNumber price={price} color="red" stroke="yellow" type={type}/>
+            <PriceNumber price={price} color="red" stroke="yellow" type={type}/>
         
-                <Rect
-                    x={CONFIGS_FOLDER.featuredProduct.size - 110}
-                    cornerRadius={10}
-                    y={CONFIGS_FOLDER.featuredProduct.size - 70}
-                    zIndex={0}
-                    width={110}
-                    height={45}
-                    fill="#e5e202"
-                /> 
-            </Group>     
+            <Rect
+                x={CONFIGS_FOLDER.featuredProduct.size - 110}
+                cornerRadius={10}
+                y={CONFIGS_FOLDER.featuredProduct.size - 80}
+                width={110}
+                height={45}
+                zIndex={0}
+                fill="#e5e202"
+            /> 
+                
         </React.Fragment>
     )
 };  

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Group, Layer, Stage } from 'react-konva';
 import { connect } from 'react-redux';
-import { BackgroundFolder, FeaturedProduct, FooterFolder, HeaderFolder, LogoFolder, ProductCard, TitleFolder } from '../../components';
+import { BackgroundFolder, FeaturedProduct, FooterFolder, HeaderFolder, LogoFolder, ProductCard, TitleFolder, UploadFolderButton } from '../../components';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import { calcPositionFeaturedsCard, calcPositionProducts } from '../../helpers/positions_elements';
 import { Container } from '../../styles/components';
@@ -98,6 +98,8 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
     const [ featureds, setFeatured ] = useState([]);
     const [ products, setProducts ] = useState(properties_folder.products);
     const [ backgroundImage, setBackgroundImage ] = useState(null);
+    const [ headerImage, setHeaderImage ] = useState(null);
+    const [ footerImage, setFooterImage ] = useState(null);
     const stageRef = useRef(null);
     const inputBackgroundRef = useRef(null);
 
@@ -107,26 +109,8 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
         downloadURI(uri, 'folder-exportado.png');
     };
 
-    const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
-
-
-    const handleFileBackground = async (event) => {
-
-        const file = Array.from(event.target.files)[0];
-        
-        if (file) {
-
-            const fileExport = await toBase64(file);
-            
-            setBackgroundImage(fileExport);
-
-        }
-
+    const isStageVisible = () => {
+        return backgroundImage;
     };
 
     return (
@@ -135,44 +119,59 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                 <h1>Gerador de Folder</h1>
                 <p>Selecione os produtos que deseja inserir no folder</p>
             </header>
+
+            <div className="actions">
+                <UploadFolderButton
+                    emitterEvent={(dataBase64) => setBackgroundImage(dataBase64)} 
+                    label="Importar Background" />
+                <UploadFolderButton
+                    emitterEvent={(dataBase64) => setHeaderImage(dataBase64)} 
+                    label="Importar Cabeçalho" />
+                <UploadFolderButton
+                    emitterEvent={(dataBase64) => setFooterImage(dataBase64)} 
+                    label="Importar Rodapé" />          
+            </div>
             
-            <label>Importar Background </label>
-            <input type="file" ref={inputBackgroundRef} placeholder="Importar background" onChange={(e) => handleFileBackground(e)}/>
+            {
+                isStageVisible() && (
+                    <Stage width={CONFIGS_FOLDER.size} height={CONFIGS_FOLDER.size} ref={stageRef}>
+                        <Layer zIndex={0}>
+                            <BackgroundFolder url={backgroundImage}/>
+                        </Layer>
+                        <Layer x={0} y={0} zIndex={1}>
+                            <Group x={0} y={0}>
+                                <HeaderFolder  url={headerImage}/>
+                            </Group>
+                            {
+                            featureds && (
+                                    featureds.map((featured, index) => 
+                                        <Group key={index} x={calcPositionFeaturedsCard(index)} y={CONFIGS_FOLDER.position_initial_products.y}>
+                                            <FeaturedProduct {...featured} />
+                                        </Group>
+                                    )
+                            ) 
+                            }
+                            {/* Destaques */}
+                            { 
+                                products && (
+                                    products.map((product, index) => 
+                                        <Group key={index} x={calcPositionProducts(index).x} y={calcPositionProducts(index).y}>
+                                            <ProductCard {...product} />
+                                        </Group>
+                                    )   
+                                )
+                            }
+                            <Group x={0} y={CONFIGS_FOLDER.size - CONFIGS_FOLDER.height_bottom}>
+                                <FooterFolder url={footerImage}/>
+                            </Group>
+                        </Layer>
+                        
+                        
+                    </Stage>
+                )
+            }
             
-            <Stage width={CONFIGS_FOLDER.size} height={CONFIGS_FOLDER.size} ref={stageRef}>
-                <Layer zIndex={0}>
-                    <BackgroundFolder url={backgroundImage}/>
-                </Layer>
-                <Layer x={0} y={0} zIndex={1}>
-                    <Group x={0} y={0}>
-                        <HeaderFolder/>
-                    </Group>
-                    {
-                       featureds && (
-                            featureds.map((featured, index) => 
-                                <Group key={index} x={calcPositionFeaturedsCard(index)} y={CONFIGS_FOLDER.position_initial_products.y}>
-                                    <FeaturedProduct {...featured} />
-                                </Group>
-                            )
-                       ) 
-                    }
-                    {/* Destaques */}
-                    { 
-                        products && (
-                            products.map((product, index) => 
-                                <Group key={index} x={calcPositionProducts(index).x} y={calcPositionProducts(index).y}>
-                                    <ProductCard {...product} />
-                                </Group>
-                            )   
-                        )
-                    }
-                    <Group x={0} y={CONFIGS_FOLDER.size - CONFIGS_FOLDER.height_bottom}>
-                        <FooterFolder/>
-                    </Group>
-                </Layer>
-                
-                
-            </Stage>
+            
             <button onClick={() => handleExport()}>Exportar</button>
         </Container>
     )
