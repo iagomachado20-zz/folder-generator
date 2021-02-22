@@ -62,7 +62,7 @@ const FeaturedProduct = ({  text, image, price, type }) => {
                     x={CONFIGS_FOLDER.featuredProduct.size - 110}
                     cornerRadius={10}
                     y={CONFIGS_FOLDER.featuredProduct.size - 50}
-                    zIndex={1}
+                    zIndex={0}
                     shadowColor="#a00d0d"
                     shadowBlur={1}
                     shadowOpacity={1}

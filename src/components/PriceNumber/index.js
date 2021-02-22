@@ -8,14 +8,14 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
 
     return (
         <React.Fragment>
-            <Group zIndex={2}>
+            <Group zIndex={1}>
                 <Text
                     fontSize={10}
                     width={20}
-                    fill="black"
+                    fill="white"
                     align="right"
                     fontFamily="'Montserrat', sans-serif"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 25} 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 40} 
                     x={CONFIGS_FOLDER.featuredProduct.size - 140} text="R$"/>
                 <Text
                     fontSize={62}
@@ -25,7 +25,7 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                     strokeWidth={3}
                     letterSpacing={-2}
                     align="right"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 55} 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 70} 
                     fontFamily="'Sigmar One', cursive"
                     x={CONFIGS_FOLDER.featuredProduct.size - 180} text={priceFormated[0]}/>
                 <Text
@@ -36,16 +36,16 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                     width={110}
                     strokeWidth={3}
                     align="right"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 45} 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 70} 
                     fontFamily="'Sigmar One', cursive"
-                    x={CONFIGS_FOLDER.featuredProduct.size - 115} text={',' + priceFormated[1]}/> 
+                    x={CONFIGS_FOLDER.featuredProduct.size - 130} text={',' + priceFormated[1]}/> 
                 <Text
                     fontSize={10}
                     width={50}
                     align="right"
                     fontFamily="'Montserrat', sans-serif"
                     fill="black"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 18} 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 40} 
                     x={CONFIGS_FOLDER.featuredProduct.size - 60} text={type}/> 
             </Group>             
         </React.Fragment>

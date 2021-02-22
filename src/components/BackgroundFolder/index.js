@@ -3,9 +3,8 @@ import { Image, Layer } from 'react-konva';
 import useImage from 'use-image';
 import { CONFIGS_FOLDER } from '../../config/constants';
 
-const url = 'https://images.unsplash.com/photo-1569982175971-d92b01cf8694?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHw%3D&w=1000&q=80';
 
-const BackgroundFolder = () => {
+const BackgroundFolder = ({ url }) => {
 
     const [image] = useImage(url, 'Anonymous');
 

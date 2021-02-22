@@ -4,6 +4,8 @@ import PriceNumber from './PriceNumber';
 import ProductCard from './ProductCard';
 import LogoFolder from './Logo';
 import TitleFolder from './TitleFolder';
+import HeaderFolder from './HeaderFolder';
+import FooterFolder from './FooterFolder';
 
 export {
     BackgroundFolder,
@@ -11,5 +13,7 @@ export {
     PriceNumber,
     ProductCard,
     LogoFolder,
-    TitleFolder
+    TitleFolder,
+    HeaderFolder,
+    FooterFolder
 }

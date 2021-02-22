@@ -1,9 +1,10 @@
 export const CONFIGS_FOLDER = {
     size: 1048,
-    height_top: 180,
+    height_top: 258,
+    height_bottom: 183,
     position_initial_products: {
         x: 0,
-        y: 180
+        y: 270
     },
     size_logo: {
         width: 250,
@@ -16,11 +17,11 @@ export const CONFIGS_FOLDER = {
     },
     products_position: {
         x: 0,
-        y: 440
+        y: 380
     },
     products: {
-        gap: 22,
-        size: 245,
-        height: 200
+        gap: 10,
+        size: 225,
+        height: 225
     }
 };

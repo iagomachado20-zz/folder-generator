@@ -35,7 +35,7 @@ const ProductCard = ({  text, image, price, type }) => {
                 <Rect
                     x={CONFIGS_FOLDER.featuredProduct.size - 110}
                     cornerRadius={10}
-                    y={CONFIGS_FOLDER.featuredProduct.size - 50}
+                    y={CONFIGS_FOLDER.featuredProduct.size - 70}
                     zIndex={0}
                     width={110}
                     height={45}

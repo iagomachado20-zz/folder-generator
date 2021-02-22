@@ -13,7 +13,56 @@ const initialState = {
         background: null,
         logo: null,
         title: null,
-        products: null
+        products: [
+          {
+            image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+            text: 'Maçã',
+            price: 4.99,
+            type: 'KG'
+        },
+        {
+            image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+            text: 'Maçã',
+            price: 4.99,
+            type: 'KG'
+        },
+        {
+            image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+            text: 'Maçã',
+            price: 4.99,
+            type: 'KG'
+        },
+        {
+            image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+            text: 'Maçã',
+            price: 4.99,
+            type: 'KG'
+        },
+        {
+            image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+            text: 'Maçã',
+            price: 4.99,
+            type: 'KG'
+        },
+        {
+            image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+            text: 'Maçã',
+            price: 4.99,
+            type: 'KG'
+        },
+        {
+            image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+            text: 'Maçã',
+            price: 4.99,
+            type: 'KG'
+        },
+        {
+            image: 'https://trimais.vteximg.com.br/arquivos/ids/1003103-1000-1000/foto_original.jpg?v=637395796285270000',
+            text: 'Maçã',
+            price: 4.99,
+            type: 'KG'
+        },
+        ]
     }
 };
 
