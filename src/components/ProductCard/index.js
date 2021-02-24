@@ -12,27 +12,34 @@ const ProductCard = ({  text, image, price, type, onDelete, visibleClose }) => {
         <React.Fragment>
 
 
-        {
-            visibleClose && (
-                <Group zIndex={2} onClick={() => onDelete()}>
-
-                    <Text 
-                        text="X"
-                        zIndex={1}
-                        fill="white" 
-                        x={CONFIGS_FOLDER.featuredProduct.size - 20}
-                        y={-5}/>
+            { visibleClose && (
+                <Group onClick={() => onDelete()}>
                     <Circle
                         x={CONFIGS_FOLDER.featuredProduct.size - 15}
-                        y={0}
-                        zIndex={0}
+                        y={25}
                         width={30}
                         height={30} 
                         fill="red" ></Circle>
+                    <Text 
+                        text="X"
+                        fill="white"
+                        x={CONFIGS_FOLDER.featuredProduct.size - 20}
+                        y={20}/>
+                    
                 </Group>  
-            )
-        }
-        
+            )}
+            {/* Imagem */}    
+            <Image y={50} image={productImage} x={50}  left={50} 
+                width={CONFIGS_FOLDER.featuredProduct.image} 
+                height={CONFIGS_FOLDER.featuredProduct.image}/>
+            <Rect
+                x={CONFIGS_FOLDER.featuredProduct.size - 110}
+                cornerRadius={10}
+                y={CONFIGS_FOLDER.featuredProduct.size - 80}
+                width={110}
+                height={45}
+                fill="#e5e202"
+            /> 
 
             {/* Descrição */}
             <Text 
@@ -46,22 +53,11 @@ const ProductCard = ({  text, image, price, type, onDelete, visibleClose }) => {
                 fill="white"
                 fontFamily="'Montserrat', sans-serif"
                 text={text} fontSize={16}/>      
-            {/* Imagem */}    
-            <Image zIndex={0} y={50} image={productImage} x={50}  left={50} 
-                width={CONFIGS_FOLDER.featuredProduct.image} 
-                height={CONFIGS_FOLDER.featuredProduct.image}/>  
+              
             {/* Preço */}
             <PriceNumber price={price} color="red" stroke="yellow" type={type}/>
         
-            <Rect
-                x={CONFIGS_FOLDER.featuredProduct.size - 110}
-                cornerRadius={10}
-                y={CONFIGS_FOLDER.featuredProduct.size - 80}
-                width={110}
-                height={45}
-                zIndex={1}
-                fill="#e5e202"
-            /> 
+            
                 
         </React.Fragment>
     )

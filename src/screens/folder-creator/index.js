@@ -44,6 +44,8 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
 
     const handleExport = () => {
 
+        if (!stageRef.current) return false;
+
         setVisibleClose(false);
 
         setTimeout(() => {
@@ -98,10 +100,13 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
 
     };
 
-    const deleteItem = (item) => {
+    const deleteItem = (item, type="product") => {
 
-        setFeatured((old) => old.filter(oldItem => oldItem.id !== item.id));
-        setProducts((old) => old.filter(oldItem => oldItem.id !== item.id));
+        if (type === 'featured') {
+            setFeatured((old) => old.filter(oldItem => oldItem.id !== item.id));
+        } else {
+            setProducts((old) => old.filter(oldItem => oldItem.id !== item.id));
+        }
 
     };
 
@@ -117,7 +122,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                     {  productSelected && (
                         <ContainerForm>
                             <div className="title">
-                                <h4>Complete as informações do produto <strong>{productSelected.text}</strong> </h4>
+                                <p>Complete as informações do produto <strong>{productSelected.text}</strong> </p>
                             </div>
                             
                             <div className="block">
@@ -148,16 +153,18 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                     <UploadFolderButton
                         emitterEvent={(dataBase64) => setFooterImage(dataBase64)} 
                         label="Importar Rodapé" />
-                    <ButtonLarge onClick={() => handleExport()}>Exportar Arquivo</ButtonLarge>              
+                    <ButtonLarge onClick={() => handleExport()}> 
+                        <span className="material-icons">save</span> Exportar Arquivo
+                    </ButtonLarge>              
                 </div>
                 
                 {
                     isStageVisible() && (
                         <Stage width={CONFIGS_FOLDER.size} height={CONFIGS_FOLDER.size} ref={stageRef}>
-                            <Layer zIndex={0}>
+                            <Layer>
                                 <BackgroundFolder url={backgroundImage}/>
                             </Layer>
-                            <Layer x={0} y={0} zIndex={1}>
+                            <Layer x={0} y={0}>
                                 <Group x={0} y={0}>
                                     <HeaderFolder  url={headerImage}/>
                                 </Group>
@@ -165,7 +172,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                                     featureds && (
                                         featureds.map((featured, index) => 
                                             <Group key={index} x={calcPositionFeaturedsCard(index)} y={CONFIGS_FOLDER.position_initial_products.y}>
-                                                <FeaturedProduct visibleClose={visibleClose} {...featured} onDelete={() => deleteItem(featured)} />
+                                                <FeaturedProduct visibleClose={visibleClose} {...featured} onDelete={() => deleteItem(featured, 'featured')} />
                                             </Group>
                                         )
                                     ) 

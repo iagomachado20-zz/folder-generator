@@ -27,9 +27,9 @@ const UploadFolderButton = ({ label, emitterEvent}) => {
 
     return (
         <ContainerBox>
-            <h4>{ label }</h4>
+            
             <Box>
-                <label>Escolher Arquivo</label>
+                <label>{ label }</label>
                 <InputFile type="file" onChange={(e) => handleFileBackground(e)}/>
             </Box>
         </ContainerBox>

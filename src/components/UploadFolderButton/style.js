@@ -35,6 +35,7 @@ const Box = styled.div`
     color: #fff;
     label {
         width: 100%;
+        font-size: 14px;
         display: block;
         text-align: center;
     }

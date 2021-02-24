@@ -10,7 +10,6 @@ const LogoFolder = () => {
 
     return (
         <Image 
-            zIndex={1}
             image={imageLogo} 
             width={CONFIGS_FOLDER.size_logo.width}
             height={CONFIGS_FOLDER.size_logo.height} />    

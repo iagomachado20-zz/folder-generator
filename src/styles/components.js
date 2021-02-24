@@ -22,7 +22,7 @@ export const Container = styled.div`
         align-items: center;
         background: #efefef;
         > div {
-            margin-right: 2.5%;
+            margin-right: 10px;
         }
     }
 `
@@ -40,11 +40,17 @@ export const Button = styled.button`
 `
 
 export const ButtonLarge = styled(Button)`
-    height: 90px;
+    height: 70px;
     padding: 0 50px;
     font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     right: 0;
     font-weight: bold;
     font-family: ${FONTS.default}, sans-serif;
+    span {
+        margin: 0 10px;
+    }
 `

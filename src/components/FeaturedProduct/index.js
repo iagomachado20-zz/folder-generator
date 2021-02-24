@@ -11,27 +11,9 @@ const FeaturedProduct = ({  text, image, price, type, onDelete, visibleClose }) 
     return (
         <React.Fragment>
 
-            { visibleClose && (
-                <Group zIndex={2} onClick={() => onDelete()}>
-
-                    <Text 
-                        text="X"
-                        zIndex={1}
-                        fill="white" 
-                        x={CONFIGS_FOLDER.featuredProduct.size - 20}
-                        y={-5}/>
-                    <Circle
-                        x={CONFIGS_FOLDER.featuredProduct.size - 15}
-                        y={0}
-                        zIndex={4}
-                        width={30}
-                        height={30} 
-                        fill="red" ></Circle>
-                </Group>  
-            )}
-
 
             {/* Background */}
+            
             <Rect
                 x={0}
                 shadowColor="#c7c50f"
@@ -45,6 +27,23 @@ const FeaturedProduct = ({  text, image, price, type, onDelete, visibleClose }) 
                 height={CONFIGS_FOLDER.featuredProduct.height}
                 fill="#e5e202"
             />
+            {/* Imagem */}    
+            <Image y={40} image={productImage} x={50}  left={50} 
+                width={CONFIGS_FOLDER.featuredProduct.image} 
+                height={CONFIGS_FOLDER.featuredProduct.image}/> 
+            <Rect
+                x={CONFIGS_FOLDER.featuredProduct.size - 110}
+                cornerRadius={10}
+                y={CONFIGS_FOLDER.featuredProduct.height - 50}
+                shadowColor="#a00d0d"
+                shadowBlur={1}
+                shadowOpacity={1}
+                shadowOffsetX={-5}
+                shadowOffsetY={2}
+                width={110}
+                height={45}
+                fill="red"
+            />     
             {/* Descrição */}
             <Text 
                 width={CONFIGS_FOLDER.featuredProduct.size}
@@ -55,44 +54,42 @@ const FeaturedProduct = ({  text, image, price, type, onDelete, visibleClose }) 
                 fontFamily="'Montserrat', sans-serif"
                 fill="black"
                 text={text} fontSize={16}/>
-            {/* Imagem */}    
-            <Image zIndex={1} y={40} image={productImage} x={50}  left={50} 
-                width={CONFIGS_FOLDER.featuredProduct.image} 
-                height={CONFIGS_FOLDER.featuredProduct.image}/> 
+            
 
             {/* Flag */}        
             <Text
                 fontSize={18}
-                zIndex={2}
                 fill="white"
                 strokeWidth={2}
                 rotation={-20}
                 stroke="red"
                 strokeScaleEnabled
                 fontFamily="'Sigmar One', cursive"
-                y={CONFIGS_FOLDER.featuredProduct.height - 25} 
+                y={CONFIGS_FOLDER.featuredProduct.height - 30} 
                 x={5} text="IMBATÍVEL"/> 
 
             {/* Preço */}
-            <Group>
+            <PriceNumber price={price} type={type}/>
 
-                <PriceNumber price={price} type={type}/>
-                   
-                <Rect
-                    x={CONFIGS_FOLDER.featuredProduct.size - 110}
-                    cornerRadius={10}
-                    y={CONFIGS_FOLDER.featuredProduct.height - 50}
-                    zIndex={0}
-                    shadowColor="#a00d0d"
-                    shadowBlur={1}
-                    shadowOpacity={1}
-                    shadowOffsetX={-5}
-                    shadowOffsetY={2}
-                    width={110}
-                    height={45}
-                    fill="red"
-                /> 
-            </Group>       
+
+             { visibleClose && (
+                <Group onClick={() => onDelete()}>
+
+                    
+                    <Circle
+                        x={CONFIGS_FOLDER.featuredProduct.size - 15}
+                        y={15}
+                        width={30}
+                        height={30} 
+                        fill="red" ></Circle>
+                    <Text 
+                        text="X"
+                        fill="white"
+                        x={CONFIGS_FOLDER.featuredProduct.size - 20}
+                        y={10}/>    
+                </Group>  
+            )}      
+              
         </React.Fragment>
     )
 };  

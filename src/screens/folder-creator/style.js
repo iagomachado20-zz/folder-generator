@@ -7,8 +7,9 @@ export const ContainerForm = styled.div`
     flex-wrap: wrap;
     .title {
         width: 100%;
-        h4 {
+        p {
             margin-bottom: 5px;
+            margin-top: 10px;
             padding: 0 15px;
         }
     }

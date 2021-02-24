@@ -23,7 +23,7 @@ export const ItemsComplete = styled.div`
     align-items: center;
     font-weight: bold;                          
     img {
-        width: 100px;
+        width: 80px;
     }
     small {
         display: block;
