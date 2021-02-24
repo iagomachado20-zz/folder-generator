@@ -4,7 +4,7 @@ export const CONFIGS_FOLDER = {
     height_bottom: 183,
     position_initial_products: {
         x: 0,
-        y: 270
+        y: 225
     },
     size_logo: {
         width: 250,
@@ -12,12 +12,13 @@ export const CONFIGS_FOLDER = {
     },
     featuredProduct: {
         size: 245,
+        height: 215,
         gap: 22,
         image: 150
     },
     products_position: {
         x: 0,
-        y: 380
+        y: 440
     },
     products: {
         gap: 10,

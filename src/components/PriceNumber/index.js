@@ -8,14 +8,14 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
 
     return (
         <React.Fragment>
-            <Group zIndex={2}>
+            <Group zIndex={1}>
                 <Text
                     fontSize={10}
                     width={20}
-                    fill="white"
+                    fill={color === 'red' ? 'white' : 'black'}
                     align="right"
                     fontFamily="'Montserrat', sans-serif"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 40} 
+                    y={CONFIGS_FOLDER.featuredProduct.height - 20} 
                     x={CONFIGS_FOLDER.featuredProduct.size - 140} text="R$"/>
                 <Text
                     fontSize={62}
@@ -44,7 +44,7 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                     width={50}
                     align="right"
                     fontFamily="'Montserrat', sans-serif"
-                    fill="black"
+                    fill={color === 'red' ? 'black' : 'white'}
                     y={CONFIGS_FOLDER.featuredProduct.size - 50} 
                     x={CONFIGS_FOLDER.featuredProduct.size - 60} text={type}/> 
             </Group>             

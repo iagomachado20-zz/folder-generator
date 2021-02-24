@@ -27,8 +27,8 @@ const Box = styled.div`
     border-radius: 10px;
     height: 40px;
     cursor: pointer;
-    background: ${MAP_COLORS.colors.primary.normal};
-    box-shadow: 0px 2px 0px #bd8630;
+    background: ${MAP_COLORS.colors.secondary.normal};
+    box-shadow: 0px 2px 0px #25306d;
     display: flex;
     align-items: center;
     padding: 0 15px;

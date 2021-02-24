@@ -13,14 +13,14 @@ export const calcPositionProducts = (index) => {
 
     if (index < 4) {
         calc = {
-            x:  (size * index) + (gap * index) - 40,
+            x:  (size * index) + (gap * index),
             y: CONFIGS_FOLDER.products_position.y
         }
     } else {
 
         calc = {
-            x:  (size * (index - columns)) + (gap * index) - 125,
-            y: CONFIGS_FOLDER.products_position.y * 2 - size + 100
+            x:  (size * (index - columns)) + (gap * index) - 90,
+            y: CONFIGS_FOLDER.products_position.y * 2 - size + 10
         }
     }
 

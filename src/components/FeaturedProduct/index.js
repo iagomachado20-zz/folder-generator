@@ -1,15 +1,35 @@
 import React from 'react';
-import { Text, Rect, Image, Group } from 'react-konva';
+import { Text, Rect, Image, Group, Circle } from 'react-konva';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import useImage from 'use-image';
 import PriceNumber from '../PriceNumber';
 
-const FeaturedProduct = ({  text, image, price, type }) => {
+const FeaturedProduct = ({  text, image, price, type, onDelete, visibleClose }) => {
 
     const [productImage] = useImage(image, 'Anonymous');
 
     return (
         <React.Fragment>
+
+            { visibleClose && (
+                <Group zIndex={2} onClick={() => onDelete()}>
+
+                    <Text 
+                        text="X"
+                        zIndex={1}
+                        fill="white" 
+                        x={CONFIGS_FOLDER.featuredProduct.size - 20}
+                        y={-5}/>
+                    <Circle
+                        x={CONFIGS_FOLDER.featuredProduct.size - 15}
+                        y={0}
+                        zIndex={4}
+                        width={30}
+                        height={30} 
+                        fill="red" ></Circle>
+                </Group>  
+            )}
+
 
             {/* Background */}
             <Rect
@@ -22,7 +42,7 @@ const FeaturedProduct = ({  text, image, price, type }) => {
                 cornerRadius={10}
                 y={0}
                 width={CONFIGS_FOLDER.featuredProduct.size}
-                height={CONFIGS_FOLDER.featuredProduct.size}
+                height={CONFIGS_FOLDER.featuredProduct.height}
                 fill="#e5e202"
             />
             {/* Descrição */}
@@ -36,7 +56,7 @@ const FeaturedProduct = ({  text, image, price, type }) => {
                 fill="black"
                 text={text} fontSize={16}/>
             {/* Imagem */}    
-            <Image zIndex={1} y={60} image={productImage} x={50}  left={50} 
+            <Image zIndex={1} y={40} image={productImage} x={50}  left={50} 
                 width={CONFIGS_FOLDER.featuredProduct.image} 
                 height={CONFIGS_FOLDER.featuredProduct.image}/> 
 
@@ -50,7 +70,7 @@ const FeaturedProduct = ({  text, image, price, type }) => {
                 stroke="red"
                 strokeScaleEnabled
                 fontFamily="'Sigmar One', cursive"
-                y={CONFIGS_FOLDER.featuredProduct.size - 25} 
+                y={CONFIGS_FOLDER.featuredProduct.height - 25} 
                 x={5} text="IMBATÍVEL"/> 
 
             {/* Preço */}
@@ -61,7 +81,7 @@ const FeaturedProduct = ({  text, image, price, type }) => {
                 <Rect
                     x={CONFIGS_FOLDER.featuredProduct.size - 110}
                     cornerRadius={10}
-                    y={CONFIGS_FOLDER.featuredProduct.size - 50}
+                    y={CONFIGS_FOLDER.featuredProduct.height - 50}
                     zIndex={0}
                     shadowColor="#a00d0d"
                     shadowBlur={1}

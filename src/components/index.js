@@ -7,6 +7,7 @@ import TitleFolder from './TitleFolder';
 import HeaderFolder from './HeaderFolder';
 import FooterFolder from './FooterFolder';
 import UploadFolderButton from './UploadFolderButton';
+import AutoComplete from './AutoComplete';
 
 export {
     BackgroundFolder,
@@ -17,5 +18,6 @@ export {
     TitleFolder,
     HeaderFolder,
     FooterFolder,
-    UploadFolderButton
+    UploadFolderButton,
+    AutoComplete
 }
