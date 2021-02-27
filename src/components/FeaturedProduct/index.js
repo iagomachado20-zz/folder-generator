@@ -4,9 +4,9 @@ import { CONFIGS_FOLDER } from '../../config/constants';
 import useImage from 'use-image';
 import PriceNumber from '../PriceNumber';
 
-const FeaturedProduct = ({  text, image, price, type, onDelete, visibleClose }) => {
+const FeaturedProduct = ({  nome, marca, gramatura, imagem, price, unidade, onDelete, visibleClose }) => {
 
-    const [productImage] = useImage(image, 'Anonymous');
+    const [productImage] = useImage(imagem);
 
     return (
         <React.Fragment>
@@ -28,9 +28,9 @@ const FeaturedProduct = ({  text, image, price, type, onDelete, visibleClose }) 
                 fill="#e5e202"
             />
             {/* Imagem */}    
-            <Image y={40} image={productImage} x={50}  left={50} 
-                width={CONFIGS_FOLDER.featuredProduct.image} 
-                height={CONFIGS_FOLDER.featuredProduct.image}/> 
+            <Image y={40} width={140} 
+                height={150} image={productImage} x={50}  left={50} 
+                width={150}/> 
             <Rect
                 x={CONFIGS_FOLDER.featuredProduct.size - 110}
                 cornerRadius={10}
@@ -53,7 +53,7 @@ const FeaturedProduct = ({  text, image, price, type, onDelete, visibleClose }) 
                 lineHeight={1.5}
                 fontFamily="'Montserrat', sans-serif"
                 fill="black"
-                text={text} fontSize={16}/>
+                text={`${nome} ${marca} ${gramatura}`} fontSize={16}/>
             
 
             {/* Flag */}        
@@ -69,7 +69,7 @@ const FeaturedProduct = ({  text, image, price, type, onDelete, visibleClose }) 
                 x={5} text="IMBATÍVEL"/> 
 
             {/* Preço */}
-            <PriceNumber price={price} type={type}/>
+            <PriceNumber price={price} type={unidade}/>
 
 
              { visibleClose && (

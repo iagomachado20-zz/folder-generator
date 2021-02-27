@@ -16,7 +16,7 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                     align="right"
                     fontFamily="'Montserrat', sans-serif"
                     y={CONFIGS_FOLDER.featuredProduct.height - 20} 
-                    x={CONFIGS_FOLDER.featuredProduct.size - 170} text="R$"/>
+                    x={CONFIGS_FOLDER.featuredProduct.size - 140} text="R$"/>
                 <Text
                     fontSize={62}
                     fill={color}
@@ -27,18 +27,18 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                     align="right"
                     y={CONFIGS_FOLDER.featuredProduct.size - 85} 
                     fontFamily="'Sigmar One', cursive"
-                    x={CONFIGS_FOLDER.featuredProduct.size - 190} text={priceFormated[0]}/>
+                    x={CONFIGS_FOLDER.featuredProduct.size - 180} text={priceFormated[0]}/>
                 <Text
                     fontSize={35}
                     fill={color}
                     stroke={stroke}
                     letterSpacing={-2}
-                    width={110}
+                    width={90}
                     strokeWidth={3}
-                    align="right"
+                    align="left"
                     y={CONFIGS_FOLDER.featuredProduct.size - 80} 
                     fontFamily="'Sigmar One', cursive"
-                    x={CONFIGS_FOLDER.featuredProduct.size - 135} text={',' + priceFormated[1]}/> 
+                    x={180} text={',' + priceFormated[1]}/> 
                 <Text
                     fontSize={10}
                     width={50}

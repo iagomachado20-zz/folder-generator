@@ -5,33 +5,19 @@ import useImage from 'use-image';
 import PriceNumber from '../PriceNumber';
 
 
-const ProductCard = ({  text, image, price, type, onDelete, visibleClose }) => {
+const ProductCard = ({  nome, imagem, marca, price, unidade, onDelete, visibleClose }) => {
 
-    const [productImage] = useImage(image, 'Anonymous');
+    const [productImage] = useImage(imagem);
+    
     return (
         <React.Fragment>
 
 
-            { visibleClose && (
-                <Group onClick={() => onDelete()}>
-                    <Circle
-                        x={CONFIGS_FOLDER.featuredProduct.size - 15}
-                        y={25}
-                        width={30}
-                        height={30} 
-                        fill="red" ></Circle>
-                    <Text 
-                        text="X"
-                        fill="white"
-                        x={CONFIGS_FOLDER.featuredProduct.size - 20}
-                        y={20}/>
-                    
-                </Group>  
-            )}
+            
             {/* Imagem */}    
             <Image y={50} image={productImage} x={50}  left={50} 
-                width={CONFIGS_FOLDER.featuredProduct.image} 
-                height={CONFIGS_FOLDER.featuredProduct.image}/>
+                width={140}
+                height={140}/>
             <Rect
                 x={CONFIGS_FOLDER.featuredProduct.size - 110}
                 cornerRadius={10}
@@ -52,11 +38,27 @@ const ProductCard = ({  text, image, price, type, onDelete, visibleClose }) => {
                 strokeWidth={0.4}
                 fill="white"
                 fontFamily="'Montserrat', sans-serif"
-                text={text} fontSize={16}/>      
+                text={`${nome} ${marca}`} fontSize={16}/>      
               
             {/* Preço */}
-            <PriceNumber price={price} color="red" stroke="yellow" type={type}/>
-        
+            <PriceNumber price={price} color="red" stroke="yellow" type={unidade}/>
+
+            { visibleClose && (
+                <Group onClick={() => onDelete()}>
+                    <Circle
+                        x={CONFIGS_FOLDER.featuredProduct.size - 15}
+                        y={25}
+                        width={30}
+                        height={30} 
+                        fill="red" ></Circle>
+                    <Text 
+                        text="X"
+                        fill="white"
+                        x={CONFIGS_FOLDER.featuredProduct.size - 20}
+                        y={20}/>
+                    
+                </Group>  
+            )}
             
                 
         </React.Fragment>

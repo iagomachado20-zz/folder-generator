@@ -8,6 +8,7 @@ import HeaderFolder from './HeaderFolder';
 import FooterFolder from './FooterFolder';
 import UploadFolderButton from './UploadFolderButton';
 import AutoComplete from './AutoComplete';
+import Menu from './Menu';
 
 export {
     BackgroundFolder,
@@ -19,5 +20,6 @@ export {
     HeaderFolder,
     FooterFolder,
     UploadFolderButton,
-    AutoComplete
+    AutoComplete,
+    Menu
 }

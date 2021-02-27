@@ -24,6 +24,7 @@ export const ItemsComplete = styled.div`
     font-weight: bold;                          
     img {
         width: 80px;
+        margin-right: 10px;
     }
     small {
         display: block;

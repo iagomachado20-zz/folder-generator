@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Menu } from './components';
 import store from './redux/store';
 import Routes from './routes';
 import { GlobalStyle } from './styles';

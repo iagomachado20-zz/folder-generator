@@ -10,21 +10,21 @@ const getSuggestions = (value, products) => {
   const inputLength = inputValue.length;
 
   return inputLength === 0 ? [] : products.filter(lang =>
-    lang.text.toLowerCase().slice(0, inputLength) === inputValue
+    lang.nome.toLowerCase().slice(0, inputLength) === inputValue || lang.marca.toLowerCase().slice(0, inputLength) === inputValue
   );
 };
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-const getSuggestionValue = suggestion => suggestion.text;
+const getSuggestionValue = suggestion => suggestion.nome;
 
 // Use your imagination to render suggestions.
-const renderSuggestion = suggestion => (
+const renderSuggestion = suggestion => ( 
   <ItemsComplete>
-    <img src={suggestion.image}/>
-    <h4>{suggestion.text}
-      <small>{suggestion.type}</small>
+    <img src={suggestion.imagem}/>
+    <h4>{`${suggestion.nome} ${suggestion.marca}`}
+    <small>({suggestion.gramatura}) {suggestion.unidade}</small>
     </h4>
   </ItemsComplete>
 );

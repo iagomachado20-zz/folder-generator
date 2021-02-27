@@ -2,12 +2,16 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Group, Layer, Stage } from 'react-konva';
 import { connect } from 'react-redux';
 import { AutoComplete, BackgroundFolder, FeaturedProduct, FooterFolder, HeaderFolder, ProductCard, UploadFolderButton } from '../../components';
+import api from '../../config/api';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import { calcPositionFeaturedsCard, calcPositionProducts } from '../../helpers/positions_elements';
 import { Button, Container, ButtonLarge } from '../../styles/components';
-import { ContainerForm, Sidebar } from './style';
+import { ContainerForm } from './style';
+
+import { ACTIONS } from '../../redux/reducers/folder';
 
 const LIMIT_PRODUCT_BY_FOLDER = 12;
+const ANONYMOUS_CROSS = 'Anonymous';
 
 function downloadURI(uri, name) {
     var link = document.createElement("a");
@@ -32,6 +36,25 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
 
     useEffect(() => {
         
+        api.get('/product/get-products').then(response => {
+
+            const { data } = response.data.body; 
+
+            dispatch({
+                type: ACTIONS.SET_PRODUCTS,
+                payload: data
+            });
+
+        }, error => {
+
+            console.log('Error ao carregar lista de produtos');
+
+        });
+
+    }, []);
+
+    useEffect(() => {
+        
         setProductSelected(null);
 
         if (productSelected) {
@@ -49,6 +72,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
         setVisibleClose(false);
 
         setTimeout(() => {
+            
             const uri = stageRef.current.toDataURL();
             downloadURI(uri, 'folder-exportado.png');
             setVisibleClose(true);
@@ -122,7 +146,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                     {  productSelected && (
                         <ContainerForm>
                             <div className="title">
-                                <p>Complete as informações do produto <strong>{productSelected.text}</strong> </p>
+                            <p>Complete as informações do produto <strong>{productSelected.nome} {productSelected.marca}</strong> </p>
                             </div>
                             
                             <div className="block">

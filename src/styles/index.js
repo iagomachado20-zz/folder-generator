@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${FONTS.default}, sans-serif;
         padding: 0;
         font-weight: 400;
+        padding-top: 40px;
     }
     .react-autosuggest__container {
         width: 100%
