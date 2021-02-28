@@ -3,41 +3,61 @@ import { connect } from 'react-redux';
 import api from '../../../config/api';
 
 import { ACTIONS } from '../../../redux/reducers/folder';
-import { Container } from '../../../styles/components';
+import { Button, ButtonSmall, Container } from '../../../styles/components';
 
-import DataTable, { createTheme } from 'react-data-table-component';
+import DataTable from 'react-data-table-component';
 
-const columns = [
-    {
-        name: 'Id',
-        selector: 'id',
-        sortable: true,
-    },
-    {
-      name: 'Nome',
-      selector: 'nome',
-      sortable: true,
-    },
-    {
-      name: 'Marca',
-      selector: 'marca',
-      sortable: true
-    },
-    {
-        name: 'Unidade',
-        selector: 'unidade',
-        sortable: true
-    },
-    {
-        name: 'Gramatura',
-        selector: 'gramatura',
-        sortable: true
-    }
-];
+import { useHistory } from 'react-router-dom';
+
+
+const paginationOptions = { 
+    rowsPerPageText: 'Linhas por página:', 
+    rangeSeparatorText: 'of', 
+    noRowsPerPage: false, 
+    selectAllRowsItem: false, 
+    selectAllRowsItemText: 'Todos' 
+};
 
 function ListProductsPage({ properties_folder, dispatch }) {
 
+    const columns = [
+        {
+            name: 'Id',
+            selector: 'id',
+            sortable: true,
+        },
+        {
+          name: 'Nome',
+          selector: 'nome',
+          sortable: true,
+        },
+        {
+          name: 'Marca',
+          selector: 'marca',
+          sortable: true
+        },
+        {
+            name: 'Unidade',
+            selector: 'unidade',
+            sortable: true
+        },
+        {
+            name: 'Gramatura',
+            selector: 'gramatura',
+            sortable: true
+        },
+        {
+            name: 'Ação',
+            selector: null,
+            cell: linerow => <div data-tag="allowRowEvents">
+                <ButtonSmall onClick={(row) => history.push(`/edit/${linerow.id}`, {...linerow, isEdit: true})}>Editar</ButtonSmall>
+            </div>
+        }
+    ];
 
+
+    const history = useHistory();
+    
     useEffect(() => {
         
         api.get('/product/get-products').then(response => {
@@ -61,11 +81,15 @@ function ListProductsPage({ properties_folder, dispatch }) {
         <React.Fragment>
             <Container>
             <header className="heading">
-                <h1>Produtos</h1>
+                <div className="row">
+                    <h1>Produtos</h1>
+                    <Button>Adicionar Produto</Button>
+                </div>
             </header>
             <DataTable
                 header={false}
                 pagination
+                paginationComponentOptions={paginationOptions}
                 columns={columns}
                 data={properties_folder.products}
             />

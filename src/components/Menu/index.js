@@ -17,7 +17,7 @@ const Menu = () => {
             {
                 MAP_ROUTES.map((route, index) => {
 
-                    if (route.key === '/') return null;
+                    if (route.key === '/' || !route.visibleMenu) return null;
 
                     return <NavLink key={index} activeClassName="active" to={route.key}>{route.label}</NavLink> 
 

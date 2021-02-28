@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FONTS } from './variables';
+import { FONTS, MAP_COLORS } from './variables';
 
 export const Container = styled.div`
     margin: 0 auto;
@@ -7,12 +7,17 @@ export const Container = styled.div`
     display: block;
     max-width: 1048px;
     .heading {
-        padding: 25px;
+        padding: 25px 0;
         h1 {
             margin-bottom: 0;
         }
         p {
             margin-top: 5px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     }
     .actions {
@@ -53,4 +58,18 @@ export const ButtonLarge = styled(Button)`
     span {
         margin: 0 10px;
     }
+`
+
+export const ButtonSmall = styled(Button)`
+    height: 30px;
+    padding: 0 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-transform: none;
+    font-weight: 400;
+    font-family: ${FONTS.default}, sans-serif;
+    background: ${MAP_COLORS.colors.primary.normal};
 `
