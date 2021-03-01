@@ -23,6 +23,12 @@ export const MAP_ROUTES = [
         component: <DetailProductPage/>,
         label: 'Detalhe Produto',
         visibleMenu: false
+    },
+    {
+        key: '/new',
+        component: <DetailProductPage/>,
+        label: 'Detalhe Produto',
+        visibleMenu: false
     }
 ];
 

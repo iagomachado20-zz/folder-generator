@@ -50,7 +50,7 @@ function ListProductsPage({ properties_folder, dispatch }) {
             name: 'Ação',
             selector: null,
             cell: linerow => <div data-tag="allowRowEvents">
-                <ButtonSmall onClick={(row) => history.push(`/edit/${linerow.id}`, {...linerow, isEdit: true})}>Editar</ButtonSmall>
+                <ButtonSmall onClick={(row) => history.push(`edit/${linerow.id}`, {...linerow, isEdit: true})}>Editar</ButtonSmall>
             </div>
         }
     ];
@@ -62,7 +62,7 @@ function ListProductsPage({ properties_folder, dispatch }) {
         
         api.get('/product/get-products').then(response => {
 
-            const { data } = response.data.body; 
+            const data = response.data.body; 
 
             dispatch({
                 type: ACTIONS.SET_PRODUCTS,
@@ -83,7 +83,7 @@ function ListProductsPage({ properties_folder, dispatch }) {
             <header className="heading">
                 <div className="row">
                     <h1>Produtos</h1>
-                    <Button>Adicionar Produto</Button>
+                    <Button onClick={() => history.push('new')}>Adicionar Produto</Button>
                 </div>
             </header>
             <DataTable

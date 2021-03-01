@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { FONTS, MAP_COLORS } from './variables';
 
+const total_grids = 12;
+
 export const Container = styled.div`
     margin: 0 auto;
     position: relative;
@@ -19,6 +21,17 @@ export const Container = styled.div`
             justify-content: space-between;
             align-items: center;
         }
+    }
+    .back-button {
+        cursor: pointer;
+        background: black;
+        border: 0;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        justify-content: center;
+        font-family: ${FONTS.default}, sans-serif;
     }
     .actions {
         padding: 14px 25px;
@@ -73,3 +86,52 @@ export const ButtonSmall = styled(Button)`
     font-family: ${FONTS.default}, sans-serif;
     background: ${MAP_COLORS.colors.primary.normal};
 `
+
+export const Row = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+`
+
+export const Grid = styled.div`
+    padding: 0 15px;
+    box-sizing: border-box;
+    width: ${({size}) => (size ? size / 12 * 100 : '8.33')}%;
+`
+
+export const InputField = styled.input`
+    width: 100%;
+    height: 45px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 1.0);
+    border-radius: 4px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-family: ${FONTS.default}, sans-serif;
+    font-size: 14px;
+    outline: none;
+    &:focus, &:hover {
+        border-color: ${MAP_COLORS.colors.primary.normal};
+    }
+`;
+
+export const SelectField = styled(InputField).attrs({
+    as:'select'
+})``;
+
+export const FormGroup = styled.div`
+    margin-bottom: 10px;
+`
+
+export const LabelForm = styled.label`
+    font-size: 13px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+`
+
+export const HintForm = styled.div`
+    margin: 3px 0;
+    font-weight: bold;
+    font-size: 13px;
+`;

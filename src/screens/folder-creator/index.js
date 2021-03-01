@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Group, Layer, Stage } from 'react-konva';
 import { connect } from 'react-redux';
 import { AutoComplete, BackgroundFolder, FeaturedProduct, FooterFolder, HeaderFolder, ProductCard, UploadFolderButton } from '../../components';
-import api from '../../config/api';
+import api, { BASE_SERVER } from '../../config/api';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import { calcPositionFeaturedsCard, calcPositionProducts } from '../../helpers/positions_elements';
 import { Button, Container, ButtonLarge } from '../../styles/components';
@@ -38,11 +38,19 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
         
         api.get('/product/get-products').then(response => {
 
-            const { data } = response.data.body; 
+            let products = response.data.body; 
+
+            products = products.map(product => {
+
+                product.imagem = BASE_SERVER + product.imagem;
+
+                return product;
+
+            });
 
             dispatch({
                 type: ACTIONS.SET_PRODUCTS,
-                payload: data
+                payload: products
             });
 
         }, error => {
