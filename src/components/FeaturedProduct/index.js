@@ -6,7 +6,7 @@ import PriceNumber from '../PriceNumber';
 
 const FeaturedProduct = ({  nome, marca, gramatura, imagem, price, unidade, onDelete, visibleClose }) => {
 
-    const [productImage] = useImage(imagem);
+    const [productImage] = useImage(imagem, 'Anonymous');
 
     return (
         <React.Fragment>

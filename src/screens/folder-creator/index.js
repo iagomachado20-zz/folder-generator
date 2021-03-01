@@ -9,9 +9,9 @@ import { Button, Container, ButtonLarge } from '../../styles/components';
 import { ContainerForm } from './style';
 
 import { ACTIONS } from '../../redux/reducers/folder';
+import CurrencyInput from 'react-currency-input';
 
 const LIMIT_PRODUCT_BY_FOLDER = 12;
-const ANONYMOUS_CROSS = 'Anonymous';
 
 function downloadURI(uri, name) {
     var link = document.createElement("a");
@@ -104,7 +104,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
         }
 
         const isFeaturedProduct = featuredCheckRef.current.checked;
-        let priceValue = priceRef.current.value;
+        let priceValue = priceRef.current.state.value;
 
         if (!priceValue) {
             alert('Você precisa informar o preço do produto!');
@@ -142,6 +142,17 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
 
     };
 
+    const clearFolder = () => {
+
+        setBackgroundImage(null);
+        setHeaderImage(null);
+        setFooterImage(null);
+        setProductSelected(null);
+        setProducts([]);
+        setFeatured([]);
+
+    };
+
     return (
         <React.Fragment>
             <Container>
@@ -159,7 +170,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                             
                             <div className="block">
                                 <label>Valor</label>
-                                <input type="number" min="1" step="any" ref={priceRef} placeholder="Preço (R$)"/>
+                                <CurrencyInput ref={priceRef} prefix="R$"/>
                             </div>
                             <div className="block">
                                 <label>Destaque</label>
@@ -185,9 +196,14 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                     <UploadFolderButton
                         emitterEvent={(dataBase64) => setFooterImage(dataBase64)} 
                         label="Importar Rodapé" />
-                    <ButtonLarge onClick={() => handleExport()}> 
-                        <span className="material-icons">save</span> Exportar Arquivo
-                    </ButtonLarge>              
+                    <div className="buttons-big">
+                        <ButtonLarge color="secondary" onClick={() => handleExport()}> 
+                            <span className="material-icons">save</span> Exportar Arquivo
+                        </ButtonLarge>
+                        <ButtonLarge onClick={() => clearFolder()}> 
+                            <span className="material-icons">save</span> Novo Arquivo
+                        </ButtonLarge>  
+                    </div>            
                 </div>
                 
                 {

@@ -20,7 +20,7 @@ export const ContainerForm = styled.div`
             font-size: 12px;
             margin-bottom: 5px;
         }
-        input[type="number"] {
+        input[type="text"] {
             border-radius: 30px;
             height: 40px;
             border: 1px solid #ccc;
