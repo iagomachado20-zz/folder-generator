@@ -1,8 +1,9 @@
 import React from 'react';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import { Group, Text } from 'react-konva';
+import { calcPositionPriceByLengthChars } from '../../helpers/positions_elements';
 
-const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
+const PriceNumber = ({ textColor = '#ffffff', price, color = 'yellow', stroke='red', type }) => {
 
     const priceFormated = price.toString().split('.');
 
@@ -12,22 +13,23 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                 <Text
                     fontSize={10}
                     width={20}
-                    fill={color === 'red' ? 'white' : 'black'}
-                    align="right"
+                    fill={textColor}
+                    align="left"
                     fontFamily="'Montserrat', sans-serif"
                     y={CONFIGS_FOLDER.featuredProduct.height - 20} 
-                    x={CONFIGS_FOLDER.featuredProduct.size - 140} text="R$"/>
+                    x={calcPositionPriceByLengthChars(price).sufix} text="R$"/>
                 <Text
                     fontSize={62}
                     fill={color}
                     stroke={stroke}
-                    width={110}
+                    width={calcPositionPriceByLengthChars(price).firstDigit + 50}
                     strokeWidth={3}
                     letterSpacing={-2}
-                    align="right"
+                    fontStyle="bold"
+                    align="left"
                     y={CONFIGS_FOLDER.featuredProduct.size - 85} 
-                    fontFamily="'Sigmar One', cursive"
-                    x={CONFIGS_FOLDER.featuredProduct.size - 180} text={priceFormated[0]}/>
+                    fontFamily="'Montserrat', sans-serif"
+                    x={calcPositionPriceByLengthChars(price).firstDigit} text={priceFormated[0]}/>
                 <Text
                     fontSize={35}
                     fill={color}
@@ -35,10 +37,11 @@ const PriceNumber = ({ price, color = 'yellow', stroke='red', type }) => {
                     letterSpacing={-2}
                     width={90}
                     strokeWidth={3}
+                    fontStyle="bold"
                     align="left"
                     y={CONFIGS_FOLDER.featuredProduct.size - 80} 
-                    fontFamily="'Sigmar One', cursive"
-                    x={180} text={',' + priceFormated[1]}/> 
+                    fontFamily="'Montserrat', sans-serif"
+                    x={187} text={',' + priceFormated[1]}/> 
                 <Text
                     fontSize={10}
                     width={50}

@@ -39,12 +39,11 @@ function Routes() {
             <Menu/>
             <Switch>
                 { MAP_ROUTES.map((route, index) => 
-                    <Route path={route.key} key={index}>
+                    <Route exact path={route.key} key={index}>
                         {route.component}
                     </Route>    
-                )}
-                <Redirect exact from="/" to="criar-folder" />
-                <Redirect from="/autoencarte/encarte" to="/criar-folder" />      
+                )}        
+                <Redirect from="/" to="/criar-folder" />
             </Switch>
         </Router>
     )

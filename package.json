@@ -29,7 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://allmidias.com.br/autoencarte/encarte",
+  "homepage": "https://allmidias.com.br/autoencarte/encarte/",
   "eslintConfig": {
     "extends": [
       "react-app",

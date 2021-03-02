@@ -12,7 +12,6 @@ import Menu from './Menu';
 
 export {
     BackgroundFolder,
-    FeaturedProduct,
     PriceNumber,
     ProductCard,
     LogoFolder,

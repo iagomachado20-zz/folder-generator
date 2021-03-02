@@ -10,7 +10,7 @@ const getSuggestions = (value, products) => {
   const inputLength = inputValue.length;
 
   return inputLength === 0 ? [] : products.filter(lang =>
-    lang.nome.toLowerCase().slice(0, inputLength) === inputValue || lang.marca.toLowerCase().slice(0, inputLength) === inputValue
+    lang.nome.toLowerCase().slice(0, inputLength) === inputValue || lang.marca.toLowerCase().slice(0, inputLength) === inputValue || lang.gramatura.toLowerCase().slice(0, inputLength) === inputValue
   );
 };
 

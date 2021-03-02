@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Group, Layer, Stage } from 'react-konva';
 import { connect } from 'react-redux';
-import { AutoComplete, BackgroundFolder, FeaturedProduct, FooterFolder, HeaderFolder, ProductCard, UploadFolderButton } from '../../components';
+import { AutoComplete, BackgroundFolder, FooterFolder, HeaderFolder, ProductCard, UploadFolderButton } from '../../components';
 import api, { BASE_SERVER } from '../../config/api';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import { calcPositionFeaturedsCard, calcPositionProducts } from '../../helpers/positions_elements';
@@ -220,7 +220,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                                     featureds && (
                                         featureds.map((featured, index) => 
                                             <Group key={index} x={calcPositionFeaturedsCard(index)} y={CONFIGS_FOLDER.position_initial_products.y}>
-                                                <FeaturedProduct visibleClose={visibleClose} {...featured} onDelete={() => deleteItem(featured, 'featured')} />
+                                                <ProductCard textColor="#000000" isFeatured visibleClose={visibleClose} {...featured} onDelete={() => deleteItem(featured, 'featured')} />
                                             </Group>
                                         )
                                     ) 
