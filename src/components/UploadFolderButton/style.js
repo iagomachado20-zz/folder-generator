@@ -5,6 +5,7 @@ const ContainerBox = styled.div`
     position: relative;
     display: inline-block;
     max-width: 200px;
+    margin: 0 5px;
     .box {
         position: relative;
     }

@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Group, Layer, Stage } from 'react-konva';
 import { connect } from 'react-redux';
-import { AutoComplete, BackgroundFolder, FooterFolder, HeaderFolder, ProductCard, UploadFolderButton } from '../../components';
+import { AutoComplete, BackgroundFolder, FooterFolder, HeaderFolder, LegendFolder, ProductCard, UploadFolderButton } from '../../components';
 import api, { BASE_SERVER } from '../../config/api';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import { calcPositionFeaturedsCard, calcPositionProducts } from '../../helpers/positions_elements';
-import { Button, Container, ButtonLarge } from '../../styles/components';
+import { Button, Container, ButtonLarge, InputField, Row, Grid } from '../../styles/components';
 import { ContainerForm } from './style';
 
 import { ACTIONS } from '../../redux/reducers/folder';
@@ -31,8 +31,10 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
     const stageRef = useRef(null);
     const [ productSelected, setProductSelected ] = useState(null);
     const priceRef = useRef(null);
+    const legendRef = useRef(null);
     const featuredCheckRef = useRef(null);
     const [visibleClose, setVisibleClose] = useState(true);
+    const [valueLegend, setValueLegend] = useState('');
 
     useEffect(() => {
         
@@ -187,15 +189,18 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                 
 
                 <div className="actions">
-                    <UploadFolderButton
-                        emitterEvent={(dataBase64) => setBackgroundImage(dataBase64)} 
-                        label="Importar Background" />
-                    <UploadFolderButton
-                        emitterEvent={(dataBase64) => setHeaderImage(dataBase64)} 
-                        label="Importar Cabeçalho" />
-                    <UploadFolderButton
-                        emitterEvent={(dataBase64) => setFooterImage(dataBase64)} 
-                        label="Importar Rodapé" />
+                    <div className="uploads">
+                        <UploadFolderButton
+                            emitterEvent={(dataBase64) => setBackgroundImage(dataBase64)} 
+                            label="Background" />
+                        <UploadFolderButton
+                            emitterEvent={(dataBase64) => setHeaderImage(dataBase64)} 
+                            label="Cabeçalho" />
+                        <UploadFolderButton
+                            emitterEvent={(dataBase64) => setFooterImage(dataBase64)} 
+                            label="Rodapé" />
+                    </div>
+                    
                     <div className="buttons-big">
                         <ButtonLarge color="secondary" onClick={() => handleExport()}> 
                             <span className="material-icons">save</span> Exportar Arquivo
@@ -205,6 +210,12 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                         </ButtonLarge>  
                     </div>            
                 </div>
+
+                <Row>
+                    <Grid size={6}>
+                        <InputField onChange={() => setValueLegend(legendRef.current.value)} ref={legendRef} type="text" placeholder="Informe a data de legenda"/>
+                    </Grid>
+                </Row>
                 
                 {
                     isStageVisible() && (
@@ -214,6 +225,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                             </Layer>
                             <Layer x={0} y={0}>
                                 <Group x={0} y={0}>
+                                    <LegendFolder dataText={legendRef.current.value}/>
                                     <HeaderFolder  url={headerImage}/>
                                 </Group>
                                 {

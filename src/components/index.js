@@ -1,5 +1,4 @@
 import BackgroundFolder from './BackgroundFolder';
-import FeaturedProduct from './FeaturedProduct';
 import PriceNumber from './PriceNumber';
 import ProductCard from './ProductCard';
 import LogoFolder from './Logo';
@@ -9,6 +8,7 @@ import FooterFolder from './FooterFolder';
 import UploadFolderButton from './UploadFolderButton';
 import AutoComplete from './AutoComplete';
 import Menu from './Menu';
+import LegendFolder from './LegendFolder';
 
 export {
     BackgroundFolder,
@@ -20,5 +20,6 @@ export {
     FooterFolder,
     UploadFolderButton,
     AutoComplete,
-    Menu
+    Menu,
+    LegendFolder
 }

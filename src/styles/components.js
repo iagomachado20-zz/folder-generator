@@ -100,7 +100,7 @@ export const Container = styled.div`
 export const Row = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px;
+    margin: 0 -15px 15px;
 `
 
 export const Grid = styled.div`
