@@ -4,7 +4,7 @@ import { CONFIGS_FOLDER } from '../../config/constants';
 
 const LegendFolder = ({ dataText = 'Insira a data' }) => {
 
-    const textFirst = `Somente no dia`;
+    const textFirst = `OFERTAS VÁLIDAS SOMENTE`;
     const textSecond = `OU ENQUANTO DURAR NOSSO ESTOQUE`;
 
     return (
@@ -18,7 +18,7 @@ const LegendFolder = ({ dataText = 'Insira a data' }) => {
                     shadowOffsetX={0}
                     shadowOffsetY={2}
                     y={0}
-                    width={CONFIGS_FOLDER.size / 2}
+                    width={CONFIGS_FOLDER.size / 1.95}
                     height={80}
                     fill="red"
                 /> 
@@ -26,7 +26,7 @@ const LegendFolder = ({ dataText = 'Insira a data' }) => {
                     width={CONFIGS_FOLDER.size / 2} 
                     y={12} fontStyle="bold"
                     fontSize={22} 
-                    x={70}
+                    x={25}
                     verticalAlign="center" 
                     align="left" lineHeight={1.5}
                     fontFamily="'Montserrat', sans-serif" 
@@ -37,7 +37,7 @@ const LegendFolder = ({ dataText = 'Insira a data' }) => {
                     width={CONFIGS_FOLDER.size / 2} 
                     y={12} fontStyle="bold"
                     fontSize={22} 
-                    x={290}
+                    x={375}
                     width={240}
                     verticalAlign="center" 
                     align="left" lineHeight={1.5}

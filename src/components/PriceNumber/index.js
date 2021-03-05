@@ -28,24 +28,25 @@ const PriceNumber = ({ textColor = '#ffffff', price, color = 'yellow', stroke='r
                     fontStyle="bold"
                     align="left"
                     y={CONFIGS_FOLDER.featuredProduct.size - 85} 
-                    fontFamily="'Montserrat', sans-serif"
+                    fontFamily="'Alfa Slab One', cursive"
                     x={calcPositionPriceByLengthChars(price).firstDigit} text={priceFormated[0]}/>
                 <Text
-                    fontSize={35}
+                    fontSize={30}
                     fill={color}
                     stroke={stroke}
                     letterSpacing={-2}
                     width={90}
-                    strokeWidth={3}
+                    strokeWidth={0.2}
                     fontStyle="bold"
                     align="left"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 80} 
-                    fontFamily="'Montserrat', sans-serif"
-                    x={187} text={',' + priceFormated[1]}/> 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 78} 
+                    fontFamily="'Alfa Slab One', cursive"
+                    x={195} text={',' + priceFormated[1]}/> 
                 <Text
                     fontSize={10}
                     width={50}
                     align="right"
+                    fontStyle="bold"
                     fontFamily="'Montserrat', sans-serif"
                     fill={color === 'red' ? 'black' : 'white'}
                     y={CONFIGS_FOLDER.featuredProduct.size - 50} 
