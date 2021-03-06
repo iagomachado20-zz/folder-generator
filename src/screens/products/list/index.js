@@ -8,6 +8,7 @@ import { Button, ButtonSmall, Container } from '../../../styles/components';
 import DataTable from 'react-data-table-component';
 
 import { useHistory } from 'react-router-dom';
+import { Menu } from '../../../components';
 
 
 const paginationOptions = { 
@@ -79,6 +80,7 @@ function ListProductsPage({ properties_folder, dispatch }) {
 
     return (
         <React.Fragment>
+            <Menu/>
             <Container>
             <header className="heading">
                 <div className="row">

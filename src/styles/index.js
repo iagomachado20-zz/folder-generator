@@ -12,6 +12,12 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         padding-top: 40px;
     }
+    .toast {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 4000;
+    }
     .react-autosuggest__container {
         width: 100%
     }

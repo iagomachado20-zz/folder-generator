@@ -9,6 +9,7 @@ import UploadFolderButton from './UploadFolderButton';
 import AutoComplete from './AutoComplete';
 import Menu from './Menu';
 import LegendFolder from './LegendFolder';
+import Toast from './Toast';
 
 export {
     BackgroundFolder,
@@ -21,5 +22,6 @@ export {
     UploadFolderButton,
     AutoComplete,
     Menu,
-    LegendFolder
+    LegendFolder,
+    Toast
 }

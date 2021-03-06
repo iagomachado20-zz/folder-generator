@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Group, Layer, Stage } from 'react-konva';
 import { connect } from 'react-redux';
-import { AutoComplete, BackgroundFolder, FooterFolder, HeaderFolder, LegendFolder, ProductCard, UploadFolderButton } from '../../components';
+import { AutoComplete, BackgroundFolder, FooterFolder, HeaderFolder, LegendFolder, Menu, ProductCard, UploadFolderButton } from '../../components';
 import api, { BASE_SERVER } from '../../config/api';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import { calcPositionFeaturedsCard, calcPositionProducts } from '../../helpers/positions_elements';
@@ -157,6 +157,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
 
     return (
         <React.Fragment>
+            <Menu/>
             <Container>
                 <header className="heading">
                     <h1>Gerador de Folder</h1>
@@ -206,7 +207,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                             <span className="material-icons">save</span> Exportar Arquivo
                         </ButtonLarge>
                         <ButtonLarge onClick={() => clearFolder()}> 
-                            <span className="material-icons">save</span> Novo Arquivo
+                            <span className="material-icons">playlist_add</span> Novo Arquivo
                         </ButtonLarge>  
                     </div>            
                 </div>

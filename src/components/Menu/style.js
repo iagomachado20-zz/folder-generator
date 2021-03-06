@@ -5,7 +5,7 @@ export const MenuContainer = styled.header`
     height: 80px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
@@ -17,6 +17,7 @@ export const MenuContainer = styled.header`
         padding: 0 10px;
         display: inline-block;
         text-transform: uppercase;
+        line-height: 80px;
         text-decoration: none;
         font-size: 14px;
         &.active {
@@ -30,4 +31,17 @@ export const MenuContainer = styled.header`
             font-weight: 600;s
         }
     }
+    .menu {
+        height: 100%;
+        display: flex;
+    }
+`;
+
+export const ButtonLogout = styled.button`
+    border: 0;
+    font-size: 30px;
+    cursor: pointer;
+    background: transparent;
+    color: #fff;
+    padding: 0 25px;
 `;

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { FONTS, MAP_COLORS } from './variables';
 
-const total_grids = 12;
-
 export const Button = styled.button`
     height: 45px;
     border-radius: 10px;
