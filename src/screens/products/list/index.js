@@ -50,12 +50,43 @@ function ListProductsPage({ properties_folder, dispatch }) {
         {
             name: 'Ação',
             selector: null,
-            cell: linerow => <div data-tag="allowRowEvents">
-                <ButtonSmall onClick={(row) => history.push(`edit/${linerow.id}`, {...linerow, isEdit: true})}>Editar</ButtonSmall>
-            </div>
+            cell: linerow => (
+                <React.Fragment>
+                    <div className="events-bt" data-tag="allowRowEvents">
+                        <ButtonSmall 
+                            onClick={(row) => history.push(`edit/${linerow.id}`, {...linerow, isEdit: true})}>
+                            Editar
+                        </ButtonSmall>
+                        <ButtonSmall
+                            color="primary" 
+                            onClick={(row) => handleDelete(linerow)}>
+                            Excluir
+                        </ButtonSmall>
+                    </div>
+                </React.Fragment>
+            )
+            
         }
     ];
 
+    function handleDelete(item) {
+        api.delete(`/product/delete/${item.id}`).then(_ => {
+
+            const data = properties_folder.products.filter(product => product.id !== item.id); 
+
+            alert('Produto removido');
+
+            dispatch({
+                type: ACTIONS.SET_PRODUCTS,
+                payload: data
+            });
+
+        }, error => {
+
+            console.log('Error ao carregar lista de produtos');
+
+        });
+    }
 
     const history = useHistory();
     

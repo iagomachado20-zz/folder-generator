@@ -28,7 +28,7 @@ export const MenuContainer = styled.header`
             align-items: center;
             justify-content: center;
             padding: 0 25px;
-            font-weight: 600;s
+            font-weight: 600;
         }
     }
     .menu {
@@ -39,9 +39,14 @@ export const MenuContainer = styled.header`
 
 export const ButtonLogout = styled.button`
     border: 0;
-    font-size: 30px;
+    font-size: 20px;
     cursor: pointer;
     background: transparent;
     color: #fff;
-    padding: 0 25px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    span {
+        padding: 0 10px;
+    }
 `;

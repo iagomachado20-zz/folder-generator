@@ -26,7 +26,6 @@ export const ButtonSmall = styled(Button)`
     text-transform: none;
     font-weight: 400;
     font-family: ${FONTS.default}, sans-serif;
-    background: ${MAP_COLORS.colors.primary.normal};
 `
 
 export const ButtonLarge = styled(Button)`

@@ -7,10 +7,16 @@ export const GlobalStyle = createGlobalStyle`
     body, html {
         background: ${MAP_COLORS.background};
         margin: 0;
-        font-family: ${FONTS.default}, sans-serif;
+        font-family: ${FONTS.default}, sans-serif !important;
         padding: 0;
         font-weight: 400;
         padding-top: 40px;
+    }
+    .events-bt {
+        display: flex;
+        button {
+            margin: 0 5px;
+        }
     }
     .toast {
         position: fixed;

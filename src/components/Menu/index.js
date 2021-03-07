@@ -33,6 +33,7 @@ const Menu = () => {
             {
                 getToken() && (
                     <ButtonLogout title="Sair" onClick={() => logout()}>
+                        Sair
                         <span className="material-icons">logout</span>
                     </ButtonLogout>
                 )
