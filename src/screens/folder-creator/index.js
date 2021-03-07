@@ -1,12 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Group, Layer, Stage } from 'react-konva';
 import { connect } from 'react-redux';
-import { AutoComplete, BackgroundFolder, FooterFolder, HeaderFolder, LegendFolder, Menu, ProductCard, UploadFolderButton } from '../../components';
+import { AutoComplete, BackgroundFolder, FooterFolder, HeaderFolder, LegendFolder, Menu, ModalBox, ProductCard, UploadFolderButton } from '../../components';
 import api, { BASE_SERVER } from '../../config/api';
 import { CONFIGS_FOLDER } from '../../config/constants';
 import { calcPositionFeaturedsCard, calcPositionProducts } from '../../helpers/positions_elements';
-import { Button, Container, ButtonLarge, InputField, Row, Grid } from '../../styles/components';
+import { Container, ButtonLarge, InputField, Row, Grid } from '../../styles/components';
 import { ContainerForm } from './style';
+
+import Button from 'react-bootstrap/Button';
 
 import { ACTIONS } from '../../redux/reducers/folder';
 import CurrencyInput from 'react-currency-input';
@@ -34,7 +36,8 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
     const legendRef = useRef(null);
     const featuredCheckRef = useRef(null);
     const [visibleClose, setVisibleClose] = useState(true);
-    const [valueLegend, setValueLegend] = useState('');
+    const [legend, setLegend] = useState('');
+    const [showModal, setVisibleModal] = useState(false);
 
     useEffect(() => {
         
@@ -155,16 +158,70 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
 
     };
 
+    const showPromptModal = () => {
+        return (
+            <ModalBox 
+                title="Deseja criar um novo arquivo?"
+                show={showModal}
+                onClose={() => setVisibleModal(false)}
+                onAccept={() => {
+                    setVisibleModal(false);
+                    clearFolder();
+                }} 
+                text="Certifique-se que você já tenha salvo antes de prosseguir."/>
+        )
+    };
+
     return (
         <React.Fragment>
             <Menu/>
             <Container>
                 <header className="heading">
-                    <h1>Gerador de Folder</h1>
-                    <p>Selecione os produtos que deseja inserir no folder</p>
-                    <AutoComplete 
-                        products={properties_folder.products} 
-                        onSelectedItem={(item) => handleProductSelected(item)}/>
+                    <Row>
+                        <Grid size={6}>
+                            <h1>Gerador de Folder</h1>
+                            <p>Selecione os produtos que deseja inserir no folder</p>
+                        </Grid>
+                        <Grid size={6}>
+                            <div className="actions">
+                                <div className="buttons-big">
+                                    <ButtonLarge color="secondary" onClick={() => handleExport()}> 
+                                        <span className="material-icons">save</span> Exportar Arquivo
+                                    </ButtonLarge>
+                                    <ButtonLarge onClick={() => setVisibleModal(true)}> 
+                                        <span className="material-icons">playlist_add</span> Novo Arquivo
+                                    </ButtonLarge>  
+                                </div>            
+                            </div>
+                        </Grid>
+                    </Row>
+                    
+                    <Row style={{display: 'flex', alignItems: 'flex-end'}}>
+                        <Grid size={6}>
+                            <AutoComplete 
+                                products={properties_folder.products} 
+                                onSelectedItem={(item) => handleProductSelected(item)}/>
+                        </Grid>
+                        <Grid size={6}>
+                            <div>
+                                <UploadFolderButton
+                                    emitterEvent={(dataBase64) => setBackgroundImage(dataBase64)} 
+                                    label="Background" />
+                                <UploadFolderButton
+                                    emitterEvent={(dataBase64) => setHeaderImage(dataBase64)} 
+                                    label="Cabeçalho" />
+                                <UploadFolderButton
+                                    emitterEvent={(dataBase64) => setFooterImage(dataBase64)} 
+                                    label="Rodapé" />
+                            </div>
+                            <InputField 
+                                ref={legendRef}
+                                type="text"
+                                onChange={() => setLegend(legendRef.current.value)} 
+                                placeholder="Informe a data de legenda"/>
+                        </Grid>
+                    </Row>
+                    
                     {  productSelected && (
                         <ContainerForm>
                             <div className="title">
@@ -188,35 +245,6 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                     
                 </header>
                 
-
-                <div className="actions">
-                    <div className="uploads">
-                        <UploadFolderButton
-                            emitterEvent={(dataBase64) => setBackgroundImage(dataBase64)} 
-                            label="Background" />
-                        <UploadFolderButton
-                            emitterEvent={(dataBase64) => setHeaderImage(dataBase64)} 
-                            label="Cabeçalho" />
-                        <UploadFolderButton
-                            emitterEvent={(dataBase64) => setFooterImage(dataBase64)} 
-                            label="Rodapé" />
-                    </div>
-                    
-                    <div className="buttons-big">
-                        <ButtonLarge color="secondary" onClick={() => handleExport()}> 
-                            <span className="material-icons">save</span> Exportar Arquivo
-                        </ButtonLarge>
-                        <ButtonLarge onClick={() => clearFolder()}> 
-                            <span className="material-icons">playlist_add</span> Novo Arquivo
-                        </ButtonLarge>  
-                    </div>            
-                </div>
-
-                <Row>
-                    <Grid size={6}>
-                        <InputField onChange={() => setValueLegend(legendRef.current.value)} ref={legendRef} type="text" placeholder="Informe a data de legenda"/>
-                    </Grid>
-                </Row>
                 
                 {
                     isStageVisible() && (
@@ -226,7 +254,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                             </Layer>
                             <Layer x={0} y={0}>
                                 <Group x={0} y={0}>
-                                    <LegendFolder dataText={legendRef.current.value}/>
+                                    <LegendFolder dataText={legend}/>
                                     <HeaderFolder  url={headerImage}/>
                                 </Group>
                                 {
@@ -257,7 +285,7 @@ function FolderCreatorPage({ properties_folder, dispatch }) {
                         </Stage>
                     )
                 }
-
+                { showPromptModal() }
             </Container>
         </React.Fragment>
     )

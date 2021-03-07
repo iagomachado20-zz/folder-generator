@@ -19,10 +19,12 @@ export const GlobalStyle = createGlobalStyle`
         z-index: 4000;
     }
     .react-autosuggest__container {
-        width: 100%
+        width: 100%;
+        position: relative;
     }
     .react-autosuggest__input {
-        height: 60px;
+        height: 65px;
+        font-weight: bold;
         background-color: #fff;
         width: 100%;
         font-family: ${FONTS.default}, sans-serif;
@@ -32,6 +34,12 @@ export const GlobalStyle = createGlobalStyle`
         outline: none;
         border-radius: 30px;
         border: 1px solid #ccc;
+    }
+    .react-autosuggest__suggestions-container {
+        position: absolute;
+        top: 100%;
+        z-index: 30;
+        width: 100%;
     }
     .react-autosuggest__suggestions-list {
         padding: 0;

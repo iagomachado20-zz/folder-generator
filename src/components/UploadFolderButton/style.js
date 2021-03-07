@@ -25,17 +25,16 @@ const InputFile = styled.input`
 `
 
 const Box = styled.div`
-    border-radius: 10px;
-    height: 40px;
     cursor: pointer;
-    background: ${MAP_COLORS.colors.secondary.normal};
-    box-shadow: 0px 2px 0px #25306d;
+    color: ${MAP_COLORS.colors.secondary.normal};
     display: flex;
     align-items: center;
-    padding: 0 15px;
-    color: #fff;
+    padding: 0;
+    min-width: 100px;
+    border: 0;
     label {
         width: 100%;
+        font-weight: bold;
         font-size: 14px;
         display: block;
         text-align: center;

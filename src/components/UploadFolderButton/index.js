@@ -1,6 +1,8 @@
 import React from 'react';
 import { ContainerBox, InputFile, Box } from './style';
 
+import Button from 'react-bootstrap/Button';
+
 const UploadFolderButton = ({ label, emitterEvent}) => {
 
     const handleFileBackground = async (event) => {
@@ -29,7 +31,7 @@ const UploadFolderButton = ({ label, emitterEvent}) => {
         <ContainerBox>
             
             <Box>
-                <label>{ label }</label>
+                <label>Adicionar { label }</label>
                 <InputFile type="file" onChange={(e) => handleFileBackground(e)}/>
             </Box>
         </ContainerBox>

@@ -10,6 +10,7 @@ import AutoComplete from './AutoComplete';
 import Menu from './Menu';
 import LegendFolder from './LegendFolder';
 import Toast from './Toast';
+import ModalBox from './Modal';
 
 export {
     BackgroundFolder,
@@ -23,5 +24,6 @@ export {
     AutoComplete,
     Menu,
     LegendFolder,
-    Toast
+    Toast,
+    ModalBox
 }

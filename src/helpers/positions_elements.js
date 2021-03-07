@@ -57,7 +57,7 @@ export const calcPositionPriceByLengthChars = (price) => {
         return {
             box: sizes_price_default.box + 80,
             sufix: sizes_price_default.sufix - 80,
-            firstDigit: sizes_price_default.firstDigit - 80
+            firstDigit: sizes_price_default.firstDigit - 75
         }
     }
 
