@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { Container } from '../../styles/components';
 import Logo from '../../assets/logo2.png';
 
@@ -9,7 +9,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { Formik, Form as FormControl } from 'formik';
 import { Toast } from '../../components';
 import api from '../../config/api';
-import { setToken } from '../../config/auth';
+import { clearStorage, setToken } from '../../config/auth';
 import useAuth from '../../hooks/auth';
 import { useHistory, useLocation } from 'react-router-dom';
 
@@ -21,6 +21,12 @@ function LoginPage() {
     
     const [ isLoading, setStateLoading ] = useState(false);
     const [ feedbackMessage, setFeedbackMessage ] = useState(null);
+
+    useEffect(() => {
+        
+        clearStorage();
+
+    }, []);
 
     const handleSubmit = (values, setSubmitting) => {
 
