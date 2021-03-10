@@ -18,14 +18,14 @@ const LegendFolder = ({ dataText = 'Insira a data' }) => {
                     shadowOffsetX={0}
                     shadowOffsetY={2}
                     y={0}
-                    width={CONFIGS_FOLDER.size / 1.95}
-                    height={80}
+                    width={CONFIGS_FOLDER.size / 2.2}
+                    height={67}
                     fill="red"
                 /> 
                 <Text 
                     width={CONFIGS_FOLDER.size / 2} 
                     y={12} fontStyle="bold"
-                    fontSize={22} 
+                    fontSize={16} 
                     x={25}
                     verticalAlign="center" 
                     align="left" lineHeight={1.5}
@@ -36,8 +36,8 @@ const LegendFolder = ({ dataText = 'Insira a data' }) => {
                 <Text 
                     width={CONFIGS_FOLDER.size / 2} 
                     y={12} fontStyle="bold"
-                    fontSize={22} 
-                    x={375}
+                    fontSize={16} 
+                    x={280}
                     width={240}
                     verticalAlign="center" 
                     align="left" lineHeight={1.5}
@@ -47,9 +47,9 @@ const LegendFolder = ({ dataText = 'Insira a data' }) => {
                 />
                 <Text 
                     width={CONFIGS_FOLDER.size / 2} 
-                    y={40} fontStyle="bold"
-                    fontSize={22} 
-                    x={30}
+                    y={37} fontStyle="bold"
+                    fontSize={16} 
+                    x={25}
                     width={500}
                     verticalAlign="center" 
                     align="left" lineHeight={1.5}

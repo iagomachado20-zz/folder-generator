@@ -3,7 +3,7 @@ import { CONFIGS_FOLDER } from "../config/constants";
 const sizes_price_default = {
     box: 100,
     sufix: 110,
-    firstDigit: 150
+    firstDigit: 140
 };
 
 export const calcPositionProducts = (index) => {
@@ -38,7 +38,7 @@ export const calcPositionFeaturedsCard = (index) => {
 
     const { gap, size } = CONFIGS_FOLDER.featuredProduct;
 
-    return (size * index) + (gap * index);
+    return (size * index) + (gap * index) + 20;
 
 };
 
@@ -49,15 +49,15 @@ export const calcPositionPriceByLengthChars = (price) => {
 
     if (priceLength === 5) {
         return {
-            box: sizes_price_default.box + 35,
-            sufix: sizes_price_default.sufix - 30,
+            box: sizes_price_default.box + 40,
+            sufix: sizes_price_default.sufix - 45,
             firstDigit: sizes_price_default.firstDigit - 40
         }
     } else if (priceLength > 5) {
         return {
             box: sizes_price_default.box + 80,
             sufix: sizes_price_default.sufix - 80,
-            firstDigit: sizes_price_default.firstDigit - 75
+            firstDigit: sizes_price_default.firstDigit - 90
         }
     }
 

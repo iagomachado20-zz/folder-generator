@@ -22,26 +22,26 @@ const PriceNumber = ({ textColor = '#ffffff', price, color = 'yellow', stroke='r
                     fontSize={62}
                     fill={color}
                     stroke={stroke}
-                    width={calcPositionPriceByLengthChars(price).firstDigit + 50}
-                    strokeWidth={3}
-                    letterSpacing={-2}
+                    width={calcPositionPriceByLengthChars(price).firstDigit + 120}
+                    strokeWidth={5}
                     fontStyle="bold"
+                    fillAfterStrokeEnabled
                     align="left"
-                    y={CONFIGS_FOLDER.featuredProduct.size - 85} 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 80} 
                     fontFamily="'Alfa Slab One', cursive"
                     x={calcPositionPriceByLengthChars(price).firstDigit} text={priceFormated[0]}/>
                 <Text
                     fontSize={30}
                     fill={color}
                     stroke={stroke}
-                    letterSpacing={-2}
                     width={90}
-                    strokeWidth={0.2}
+                    strokeWidth={5}
+                    fillAfterStrokeEnabled
                     fontStyle="bold"
                     align="left"
                     y={CONFIGS_FOLDER.featuredProduct.size - 78} 
                     fontFamily="'Alfa Slab One', cursive"
-                    x={195} text={',' + priceFormated[1]}/> 
+                    x={187} text={',' + priceFormated[1]}/> 
                 <Text
                     fontSize={10}
                     width={50}
@@ -49,8 +49,8 @@ const PriceNumber = ({ textColor = '#ffffff', price, color = 'yellow', stroke='r
                     fontStyle="bold"
                     fontFamily="'Montserrat', sans-serif"
                     fill={color === 'red' ? 'black' : 'white'}
-                    y={CONFIGS_FOLDER.featuredProduct.size - 50} 
-                    x={CONFIGS_FOLDER.featuredProduct.size - 60} text={type}/> 
+                    y={CONFIGS_FOLDER.featuredProduct.size - 45} 
+                    x={CONFIGS_FOLDER.featuredProduct.size - 55} text={type}/> 
             </Group>             
         </React.Fragment>
     )

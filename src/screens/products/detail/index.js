@@ -169,6 +169,8 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                                             <option disabled>Selecione</option>
                                             <option value="CADA">CADA</option>
                                             <option value="KG">KG</option>
+                                            <option value="KG">100G</option>
+                                            <option value="KG">BANDEJA</option>
                                         </SelectField>
                                     </FormGroup>
                                 </Grid>

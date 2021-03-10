@@ -34,6 +34,7 @@ const ProductCard = ({ textColor="#ffffff", isFeatured, nome, imagem, marca, pri
             <Image y={40} width={140} 
                 height={150} image={productImage} x={50}  left={50} 
                 width={150}/> 
+                
             <Rect
                 x={CONFIGS_FOLDER.featuredProduct.size - calcPositionPriceByLengthChars(price).box}
                 cornerRadius={10}
@@ -60,25 +61,25 @@ const ProductCard = ({ textColor="#ffffff", isFeatured, nome, imagem, marca, pri
                 text={`${nome} ${marca} ${gramatura}`} fontSize={16}/>
             
 
-            {/* Flag */}
-            {   isFeatured && (
-                    <Text
-                    fontSize={18}
-                    fill="white"
-                    strokeWidth={2}
-                    rotation={-20}
-                    stroke="red"
-                    strokeScaleEnabled
-                    fontFamily="'Sigmar One', cursive"
-                    y={CONFIGS_FOLDER.featuredProduct.height - 30} 
-                    x={5} text="IMBATÍVEL"/> 
-                )
-            }        
+                   
             
 
             {/* Preço */}
             <PriceNumber price={price} type={unidade} textColor={textColor}/>
-
+            {/* Flag */}
+            {   isFeatured && (
+                    <Text
+                    fontSize={15}
+                    fill="white"
+                    strokeWidth={2}
+                    rotation={-30}
+                    stroke="red"
+                    strokeScaleEnabled
+                    fontFamily="'Sigmar One', cursive"
+                    y={CONFIGS_FOLDER.featuredProduct.height - 40} 
+                    x={0} text="IMBATÍVEL"/> 
+                )
+            } 
 
              { visibleClose && (
                 <Group onClick={() => onDelete()}>
