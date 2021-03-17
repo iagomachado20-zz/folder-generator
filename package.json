@@ -1,5 +1,5 @@
 {
-  "name": "encarte-automatizado",
+  "name": "gerador-link-whatsapp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -31,7 +31,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://allmidias.com.br/autoencarte/encarte/",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -7,6 +7,8 @@ import { withRouter } from 'react-router-dom';
 import api, { BASE_SERVER } from '../../../config/api';
 import { Menu } from '../../../components';
 
+import { Button as ButtonMaterial } from 'react-bootstrap';
+
 const toBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -18,11 +20,9 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
 
 
     let productMapper = { 
-        imagem: '',
         marca: '',
         nome: '',
-        unidade: '',
-        gramatura: ''
+        unidade: ''
     };
     
     const location = useLocation();
@@ -51,19 +51,6 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
 
     }, []);
 
-    const setFieldImage = async (event, method) => {
-
-        const file = event.currentTarget.files[0];
-
-        if (file) {
-            const file64 = await toBase64(file);
-
-            method("imagem", file);
-            setImageProduct(file64);
-        }        
-
-    };
-
     return (
         <React.Fragment>
             <Menu/>
@@ -71,9 +58,9 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                 <header className="heading">
                     <div className="row">
                         <h1>{ state && state.isEdit ? 'Editar Produto' : 'Criar Produto' }</h1>
-                        <button className="back-button" onClick={() => history.goBack()}> 
+                        <ButtonMaterial variant="link" onClick={() => history.goBack()}> 
                             <span className="material-icons">arrow_back</span> Voltar
-                        </button>
+                        </ButtonMaterial>
                     </div>
                 </header>
                 <Formik
@@ -123,7 +110,7 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                     {({ isSubmitting, setFieldValue, values, handleChange, handleBlur }) => (
                         <Form>
                             <Row>
-                                <Grid size={6}>
+                                <Grid size={4}>
                                     <FormGroup>
                                         <LabelForm>Nome</LabelForm>
                                         <InputField 
@@ -135,7 +122,7 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                                             name="nome" />
                                     </FormGroup>
                                 </Grid>
-                                <Grid size={6}>
+                                <Grid size={4}>
                                     <FormGroup>
                                         <LabelForm>Marca</LabelForm>
                                         <InputField
@@ -147,18 +134,7 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                                             name="marca" />
                                     </FormGroup>
                                 </Grid>
-                                <Grid size={6}>
-                                    <FormGroup>
-                                        <LabelForm>Gramatura</LabelForm>
-                                        <InputField
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.gramatura} 
-                                            required type="text" 
-                                            name="gramatura" />
-                                    </FormGroup>
-                                </Grid>
-                                <Grid size={6}>
+                                <Grid size={4}>
                                     <FormGroup>
                                         <LabelForm>Unidade</LabelForm>
                                         <SelectField 
@@ -166,7 +142,6 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                                             onBlur={handleBlur}
                                             value={values.unidade}
                                             required name="unidade">
-                                            <option disabled>Selecione</option>
                                             <option value="CADA">CADA</option>
                                             <option value="KG">KG</option>
                                             <option value="KG">100G</option>
@@ -174,20 +149,8 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                                         </SelectField>
                                     </FormGroup>
                                 </Grid>
-                                <Grid size={12}>
-                                    { imageProduct && ( <img width="100" src={imageProduct}/> ) }
-                                    <FormGroup>
-                                        <LabelForm>Imagem</LabelForm>
-                                        <InputField
-                                            accept="image/*"
-                                            onChange={(event) => setFieldImage(event, setFieldValue)}
-                                            onBlur={(event) => setFieldImage(event, setFieldValue)}
-                                            required={state === undefined || state === null} type="file" name="imagem" />
-                                        <HintForm>Sua imagem deve ter no máximo 100KB</HintForm>    
-                                    </FormGroup>
-                                </Grid>
                                 <Grid>
-                                    <Button type="submit" disabled={isSubmitting}>
+                                    <Button  type="submit" disabled={isSubmitting}>
                                         {isSubmitting ? 'Enviando...' : 'Enviar'}
                                     </Button>
                                 </Grid>

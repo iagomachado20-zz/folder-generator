@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import api from '../../../config/api';
 
 import { ACTIONS } from '../../../redux/reducers/folder';
-import { Button, ButtonSmall, Container } from '../../../styles/components';
+import { ButtonSmall, Container } from '../../../styles/components';
+
+import { Button } from 'react-bootstrap';
 
 import DataTable from 'react-data-table-component';
 
@@ -23,11 +25,6 @@ function ListProductsPage({ properties_folder, dispatch }) {
 
     const columns = [
         {
-            name: 'Id',
-            selector: 'id',
-            sortable: true,
-        },
-        {
           name: 'Nome',
           selector: 'nome',
           sortable: true,
@@ -43,25 +40,22 @@ function ListProductsPage({ properties_folder, dispatch }) {
             sortable: true
         },
         {
-            name: 'Gramatura',
-            selector: 'gramatura',
-            sortable: true
-        },
-        {
             name: 'Ação',
             selector: null,
             cell: linerow => (
                 <React.Fragment>
                     <div className="events-bt" data-tag="allowRowEvents">
-                        <ButtonSmall 
+                        <Button 
+                            variant="link"
                             onClick={(row) => history.push(`edit/${linerow.id}`, {...linerow, isEdit: true})}>
                             Editar
-                        </ButtonSmall>
-                        <ButtonSmall
-                            color="primary" 
+                        </Button>
+                        <Button
+                            size="sm"
+                            variant="danger"
                             onClick={(row) => handleDelete(linerow)}>
                             Excluir
-                        </ButtonSmall>
+                        </Button>
                     </div>
                 </React.Fragment>
             )
@@ -116,7 +110,7 @@ function ListProductsPage({ properties_folder, dispatch }) {
             <header className="heading">
                 <div className="row">
                     <h1>Produtos</h1>
-                    <Button onClick={() => history.push('new')}>Adicionar Produto</Button>
+                    <Button variant="success" onClick={() => history.push('new')}>Adicionar Produto</Button>
                 </div>
             </header>
             <DataTable
