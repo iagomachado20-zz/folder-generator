@@ -45,6 +45,7 @@ export const Aside = styled.aside`
     .list {
         padding: 15px 0;
         list-style: none;
+        width: 100%;
         li {
             padding-bottom: 10px;
             font-size: 13px;

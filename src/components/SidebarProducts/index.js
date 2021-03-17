@@ -1,7 +1,7 @@
 import React from 'react';
 import { Aside } from './style';
 
-const SidebarProducts = ({ products = [] }) => {
+const SidebarProducts = ({ products = [], onDelete }) => {
 
     return (
         <Aside className={products.length ? 'active' : ''}>
@@ -9,24 +9,29 @@ const SidebarProducts = ({ products = [] }) => {
                 <h5>Produtos Selecionados</h5>
             </header>
             <ul className="list">
-                <li>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <button>
-                        <span class="material-icons">delete</span>
-                    </button>
-                </li>
-                <li>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <button>
-                        <span class="material-icons">delete</span>
-                    </button>
-                </li>
-                <li>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <button>
-                        <span class="material-icons">delete</span>
-                    </button>
-                </li>
+                { products.map((product, index) => {
+                    return (
+                        <li key={index}>
+                            <p>
+                                {`${product.nome} ${product.marca}`} <br/> 
+                                <strong>
+                                    {product.quantidade} {product.unidade}
+                                </strong>
+                            </p>
+                            <button onClick={() => {
+
+                                const newList = [...products];
+
+                                newList.splice(index, 1);
+
+                                onDelete(newList);
+
+                            }}>
+                                <span className="material-icons">delete</span>
+                            </button>
+                        </li>
+                    )
+                })}
             </ul>
         </Aside>
     )

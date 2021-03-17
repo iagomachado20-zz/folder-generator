@@ -88,6 +88,7 @@ class AutoComplete extends React.Component {
         className="autocomplete"
         suggestions={suggestions}
         onSuggestionSelected={this.getSelected}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
