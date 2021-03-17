@@ -2,10 +2,10 @@ export const MAP_COLORS = {
     background: '#f6f6f6',
     colors: {
         primary: {
-            normal: '#ff9800',
+            normal: '#6eb438',
         },
         secondary: {
-            normal: '#3f51b5',
+            normal: '#f39202',
         }
     }
 };

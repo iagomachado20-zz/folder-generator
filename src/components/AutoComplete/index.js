@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import theme, { ItemsComplete } from './style.js';
 
+import { Button } from 'react-bootstrap';
+
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = (value, products) => {
   const inputValue = value.trim().toLowerCase();
@@ -22,10 +24,9 @@ const getSuggestionValue = suggestion => suggestion.nome;
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => ( 
   <ItemsComplete>
-    <img src={suggestion.imagem}/>
-    <h4>{`${suggestion.nome} ${suggestion.marca}`}
-    <small>({suggestion.gramatura}) {suggestion.unidade}</small>
-    </h4>
+    <h5>{`${suggestion.nome} ${suggestion.marca}`}
+      <small>{suggestion.unidade}</small>
+    </h5>
   </ItemsComplete>
 );
 
@@ -88,7 +89,6 @@ class AutoComplete extends React.Component {
         suggestions={suggestions}
         onSuggestionSelected={this.getSelected}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}

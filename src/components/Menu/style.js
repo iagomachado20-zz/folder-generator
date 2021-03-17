@@ -21,8 +21,7 @@ export const MenuContainer = styled.header`
         text-decoration: none;
         font-size: 14px;
         &.active {
-            background: ${MAP_COLORS.colors.primary.normal};
-            background: linear-gradient(226deg, #ff9800, #ff5722);
+            background: #00000026;
             height: 100%;
             display: flex;
             align-items: center;

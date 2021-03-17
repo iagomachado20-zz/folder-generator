@@ -18,6 +18,13 @@ export const GlobalStyle = createGlobalStyle`
             margin: 0 5px;
         }
     }
+    .btn {
+        .material-icons {
+            position: relative;
+            top: 5px;
+            margin: 0 5px;
+        }
+    }
     .toast {
         position: fixed;
         top: 10px;
@@ -29,16 +36,15 @@ export const GlobalStyle = createGlobalStyle`
         position: relative;
     }
     .react-autosuggest__input {
-        height: 65px;
+        height: 50px;
         font-weight: bold;
         background-color: #fff;
         width: 100%;
+        font-size: 14px;
         font-family: ${FONTS.default}, sans-serif;
-        padding: 0 25px;
+        padding: 0 15px;
         box-sizing: border-box;
-        background: ${MAP_COLORS.background};
         outline: none;
-        border-radius: 30px;
         border: 1px solid #ccc;
     }
     .react-autosuggest__suggestions-container {
@@ -51,11 +57,14 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         list-style: none;
         li {
-            background-color: ${MAP_COLORS.background};
+            background-color: #ececec;
             padding: 15px;
             border-bottom: 1px solid #e6e6e6;
             &:last-child {
                 border-bottom: 0;
+            }
+            h5 {
+                margin: 0;
             }
         }
     }

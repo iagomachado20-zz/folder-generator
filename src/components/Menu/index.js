@@ -6,6 +6,8 @@ import { MAP_ROUTES } from '../../routes';
 import { clearStorage, getToken } from '../../config/auth';
 import { useHistory } from 'react-router-dom';
 
+import Logo from '../../assets/logo.jpeg';
+
 const Menu = () => {
 
     const history = useHistory();
@@ -20,6 +22,7 @@ const Menu = () => {
     return (
         <MenuContainer>
             <div className="menu">
+                <img src={Logo}/>
                 {
                     MAP_ROUTES.map((route, index) => {
 
@@ -31,12 +34,10 @@ const Menu = () => {
                 }
             </div>
             {
-                getToken() && (
-                    <ButtonLogout title="Sair" onClick={() => logout()}>
-                        Sair
-                        <span className="material-icons">logout</span>
-                    </ButtonLogout>
-                )
+                <ButtonLogout title="Sair" onClick={() => logout()}>
+                    Sair
+                    <span className="material-icons">logout</span>
+                </ButtonLogout>
             }
             
         </MenuContainer>

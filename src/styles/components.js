@@ -90,6 +90,9 @@ export const Container = styled.div`
             margin-right: 10px;
         }
     }
+    .form-group {
+        margin-top: 10px;
+    }
 `
 
 

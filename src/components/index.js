@@ -11,6 +11,7 @@ import Menu from './Menu';
 import LegendFolder from './LegendFolder';
 import Toast from './Toast';
 import ModalBox from './Modal';
+import SidebarProducts from './SidebarProducts';
 
 export {
     BackgroundFolder,
@@ -25,5 +26,6 @@ export {
     Menu,
     LegendFolder,
     Toast,
-    ModalBox
+    ModalBox,
+    SidebarProducts
 }

@@ -9,13 +9,11 @@ import Spinner from 'react-bootstrap/Spinner';
 import { Formik, Form as FormControl } from 'formik';
 import { Toast } from '../../components';
 import api from '../../config/api';
-import { clearStorage, setToken } from '../../config/auth';
-import useAuth from '../../hooks/auth';
+import { clearStorage } from '../../config/auth';
 import { useHistory, useLocation } from 'react-router-dom';
 
-function LoginPage() {
+function RegisterPage() {
 
-    const auth = useAuth();
     let history = useHistory();
     let location = useLocation();
     
@@ -32,21 +30,14 @@ function LoginPage() {
 
         setStateLoading(true);
 
-        api.post('user/login', values).then(({ data }) => {
+        api.post('user/signup-admin', values).then(({ data }) => {
 
-            const { token, message } = data.body;
+            const { message } = data.body;
 
 
             setFeedbackMessage(message);
-            setToken(token);
 
-            let { from } = location.state || { from: { pathname: "/gerar-link" } };
-
-            auth.user = token;
-            auth.signin(token => {
-                history.replace(from);
-            });
-
+            let { from } = location.state || { from: { pathname: "/login" } };
 
             setSubmitting(false);
             setStateLoading(false);
@@ -77,7 +68,7 @@ function LoginPage() {
             <BoxForm>
                 <Header>
                     <img src={Logo}  width={200}/>
-                    <p>Informe abaixo seu email e sua senha:</p>
+                    <p>Faça seu cadastro abaixo, informando seu email e senha de preferência.</p>
                 </Header>
                 <Formik 
                     initialValues={{ email: '', senha: '' }}
@@ -101,7 +92,7 @@ function LoginPage() {
                                     required 
                                     onBlur={handleChange}
                                     onChange={handleChange}
-                                    value={values.password} 
+                                    value={values.senha} 
                                     type="password" 
                                     placeholder="Password" />
                             </Form.Group>
@@ -110,12 +101,12 @@ function LoginPage() {
                             <Button block 
                                 disabled={isSubmitting} 
                                 variant="success" type="submit">
-                                {isSubmitting ? 'Acessando...' : 'Acessar'}
+                                {isSubmitting ? 'Criando...' : 'Criar Conta'}
                             </Button>
 
                             <Button block 
                                 variant="link" 
-                                onClick={() => history.push('/cadastro')}>Cadastre-se agora 
+                                onClick={() => history.push('/login')}>Voltar para login
                             </Button>
 
                         </FormControl> 
@@ -128,4 +119,4 @@ function LoginPage() {
     )
 }
 
-export default LoginPage
+export default RegisterPage

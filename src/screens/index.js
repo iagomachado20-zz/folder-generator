@@ -1,11 +1,13 @@
-import FolderCreatorPage from './folder-creator';
+import GeneratorLink from './generator-link';
 import ListProductsPage from './products/list';
 import DetailProductPage from './products/detail';
 import LoginPage from './login';
+import RegisterPage from './register';
 
 export {
-    FolderCreatorPage,
+    GeneratorLink,
     ListProductsPage,
     DetailProductPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
 }

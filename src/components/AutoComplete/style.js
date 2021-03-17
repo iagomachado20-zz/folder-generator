@@ -21,7 +21,18 @@ export default {
 export const ItemsComplete = styled.div`
     display: flex;
     align-items: center;
-    font-weight: bold;                          
+    justify-content: space-between;
+    font-weight: bold;   
+    .field {
+        max-width: 120px;
+        input {
+            width: 100%;
+            font-size: 12px;
+            height: 40px;
+            border: 0;
+            padding: 0 15px;
+        }
+    }                       
     img {
         width: 80px;
         margin-right: 10px;
@@ -30,5 +41,8 @@ export const ItemsComplete = styled.div`
         display: block;
         margin: 5px 0;
         font-weight: 300;
+    }
+    h5 {
+        font-size: 14px;
     }
 `

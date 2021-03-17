@@ -4,7 +4,7 @@ export const Header = styled.header`
     margin-bottom: 20px;
     text-align: center;
     h2, p {
-        margin: 20px 0 10px;
+        margin: 40px 0 10px;
     }
     img {
         margin: 0 auto -20px;

@@ -2,14 +2,20 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import useAuth, { ProvideAuth } from "../hooks/auth";
 
 // Pages
-import { DetailProductPage, FolderCreatorPage, ListProductsPage, LoginPage } from '../screens';
+import { 
+  DetailProductPage, 
+  GeneratorLink, 
+  ListProductsPage, 
+  LoginPage, 
+  RegisterPage 
+} from '../screens';
 
 
 export const MAP_ROUTES = [
     {
-      key: '/criar-folder',
-      component: <FolderCreatorPage/>,
-      label: 'Criar Folder',
+      key: '/gerar-link',
+      component: <GeneratorLink/>,
+      label: 'Gerar Link',
       visibleMenu: true,
       isPrivate: true
     },
@@ -40,6 +46,13 @@ export const MAP_ROUTES = [
         label: 'Detalhe Produto',
         isPrivate: true,
         visibleMenu: false
+    },
+    {
+      key: '/cadastro',
+      component: <RegisterPage/>,
+      label: 'Cadastrar Produto',
+      isPrivate: false,
+      visibleMenu: false
     }
 ];
 
