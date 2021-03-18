@@ -1,13 +1,15 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import api from '../../../config/api';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import { Button, Container, FormGroup, Grid, HintForm, InputField, LabelForm, Row, SelectField } from '../../../styles/components';
 import { Formik, Form } from 'formik';
 import { useLocation } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
-import api, { BASE_SERVER } from '../../../config/api';
+
 import { Menu } from '../../../components';
 
 import { Button as ButtonMaterial } from 'react-bootstrap';
+import { getToken } from '../../../config/auth';
 
 const toBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -27,9 +29,6 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
     
     const location = useLocation();
     const { state } = location; 
-
-    
-    const [ imageProduct, setImageProduct ] = useState(state ? `${BASE_SERVER}${state.imagem}` : null);
 
     if (state && state.isEdit) {
         productMapper = {...state}
@@ -67,13 +66,17 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                     initialValues={productMapper}
                     onSubmit={(values, { setSubmitting }) => {
 
-                        const headers = { "Content-Type": "multipart/form-data" };
-
-                        const valuesFormData = createBodyFormData(values);
+                        const payload = {
+                            marca: values.marca,
+                            unidade: values.unidade,
+                            nome: values.nome
+                        };
 
                         if (state && state.isEdit) {
                             // editar
-                            api.put(`product/edit/${state.id}`, valuesFormData, { ...headers, timeout: 200000 })
+                            api.put(`product/edit/${state.id}`, payload, {
+                                headers: { Authorization: `Bearer ${getToken()}`}
+                            })
                             .then(response => {
 
                                 alert('Produto atualizado');
@@ -87,7 +90,9 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                         } else {
 
 
-                            api.post('product/create', valuesFormData, { ...headers, timeout: 200000 })
+                            api.post('product/create', values, {
+                                headers: { Authorization: `Bearer ${getToken()}`}
+                            })
                             .then(response => {
                                 alert('Produto cadastrado');
                                 history.goBack();
@@ -99,8 +104,6 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                         }
 
                         setTimeout(() => {
-                            
-                            // console.log(values);
 
                             setSubmitting(false);
                         }, 400);
@@ -144,8 +147,8 @@ function DetailProductPage({ properties_folder, dispatch, history}) {
                                             required name="unidade">
                                             <option value="CADA">CADA</option>
                                             <option value="KG">KG</option>
-                                            <option value="KG">100G</option>
-                                            <option value="KG">BANDEJA</option>
+                                            <option value="100G">100G</option>
+                                            <option value="BANDEJA">BANDEJA</option>
                                         </SelectField>
                                     </FormGroup>
                                 </Grid>

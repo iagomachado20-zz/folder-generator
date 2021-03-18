@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { getToken } from "../config/auth";
 import useAuth, { ProvideAuth } from "../hooks/auth";
 
 // Pages
@@ -17,7 +18,7 @@ export const MAP_ROUTES = [
       component: <GeneratorLink/>,
       label: 'Gerar Link',
       visibleMenu: true,
-      isPrivate: true
+      isPrivate: false
     },
     {
         key: '/login',
@@ -31,7 +32,7 @@ export const MAP_ROUTES = [
         component: <ListProductsPage/>,
         label: 'Produtos',
         isPrivate: true,
-        visibleMenu: true,
+        visibleMenu: true && getToken(),
     },
     {
         key: '/edit/:id',

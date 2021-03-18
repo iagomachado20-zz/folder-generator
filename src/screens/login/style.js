@@ -15,7 +15,7 @@ export const Header = styled.header`
 export const BoxForm = styled.div`
     background-color: #ffffff;
     padding: 25px;
-    margin: 0 auto;
+    margin: 80px auto;
     border-radius: 10px;
     max-width: 400px;
 `

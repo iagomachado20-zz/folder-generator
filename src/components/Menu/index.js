@@ -7,15 +7,17 @@ import { clearStorage, getToken } from '../../config/auth';
 import { useHistory } from 'react-router-dom';
 
 import Logo from '../../assets/logo.jpeg';
+import useAuth from '../../hooks/auth';
 
 const Menu = () => {
 
     const history = useHistory();
+    const { auth } = useAuth();
 
     const logout = () => {
 
         clearStorage();
-        history.push('login');
+        history.push('/login');
 
     };
 
@@ -33,11 +35,13 @@ const Menu = () => {
                     })
                 }
             </div>
-            {
-                <ButtonLogout title="Sair" onClick={() => logout()}>
-                    Sair
-                    <span className="material-icons">logout</span>
-                </ButtonLogout>
+            {   
+                getToken() && (
+                    <ButtonLogout title="Sair" onClick={() => logout()}>
+                        Sair
+                        <span className="material-icons">logout</span>
+                    </ButtonLogout>
+                )
             }
             
         </MenuContainer>

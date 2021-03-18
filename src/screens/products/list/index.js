@@ -11,6 +11,7 @@ import DataTable from 'react-data-table-component';
 
 import { useHistory } from 'react-router-dom';
 import { Menu } from '../../../components';
+import { getToken } from '../../../config/auth';
 
 
 const paginationOptions = { 
@@ -64,7 +65,9 @@ function ListProductsPage({ properties_folder, dispatch }) {
     ];
 
     function handleDelete(item) {
-        api.delete(`/product/delete/${item.id}`).then(_ => {
+        api.delete(`/product/delete/${item.id}`, {
+            headers: { Authorization: `Bearer ${getToken()}`}
+        }).then(_ => {
 
             const data = properties_folder.products.filter(product => product.id !== item.id); 
 

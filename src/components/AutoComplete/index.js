@@ -4,15 +4,14 @@ import { connect } from 'react-redux';
 
 import theme, { ItemsComplete } from './style.js';
 
-import { Button } from 'react-bootstrap';
-
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = (value, products) => {
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
 
   return inputLength === 0 ? [] : products.filter(lang =>
-    lang.nome.toLowerCase().slice(0, inputLength) === inputValue || lang.marca.toLowerCase().slice(0, inputLength) === inputValue || lang.gramatura.toLowerCase().slice(0, inputLength) === inputValue
+    lang.nome.toLowerCase().slice(0, inputLength) === inputValue 
+    || lang.marca.toLowerCase().slice(0, inputLength) === inputValue
   );
 };
 

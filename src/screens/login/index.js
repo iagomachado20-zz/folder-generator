@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import { Formik, Form as FormControl } from 'formik';
-import { Toast } from '../../components';
+import { Menu, Toast } from '../../components';
 import api from '../../config/api';
 import { clearStorage, setToken } from '../../config/auth';
 import useAuth from '../../hooks/auth';
@@ -40,11 +40,9 @@ function LoginPage() {
             setFeedbackMessage(message);
             setToken(token);
 
-            let { from } = location.state || { from: { pathname: "/gerar-link" } };
-
             auth.user = token;
             auth.signin(token => {
-                history.replace(from);
+                history.push('/produtos');
             });
 
 
@@ -74,6 +72,7 @@ function LoginPage() {
 
     return (
         <Container>
+            <Menu/>
             <BoxForm>
                 <Header>
                     <img src={Logo}  width={200}/>

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { AutoComplete, Menu, SidebarProducts } from '../../components';
-import api, { BASE_SERVER } from '../../config/api';
+import api from '../../config/api';
 import { Container, Row, Grid } from '../../styles/components';
+import { withRouter } from 'react-router-dom';
 
 import { Form, Button } from 'react-bootstrap';
 
@@ -10,7 +11,7 @@ import { ACTIONS } from '../../redux/reducers/folder';
 
 const PHONE_SENDER = '5521979880504';
 
-function GeneratorLink({ properties_folder, dispatch }) {
+function GeneratorLink({ properties_folder, dispatch, history }) {
 
     const [productSelected, setProductSelected] = useState(null);
     const quantityRef = useRef();
@@ -24,14 +25,6 @@ function GeneratorLink({ properties_folder, dispatch }) {
         api.get('/product/get-products').then(response => {
 
             let products = response.data.body; 
-
-            products = products.map(product => {
-
-                product.imagem = BASE_SERVER + product.imagem;
-
-                return product;
-
-            });
 
             dispatch({
                 type: ACTIONS.SET_PRODUCTS,
@@ -142,7 +135,6 @@ function GeneratorLink({ properties_folder, dispatch }) {
                         </Grid>
                     </Row>
                 </header>
-                
                 <Row>
                     <Grid size={12}>
                         <AutoComplete 
@@ -189,6 +181,12 @@ function GeneratorLink({ properties_folder, dispatch }) {
                             <span className="material-icons">link</span>
                             Gerar Link Whatsapp
                         </Button>
+
+                        <Button variant="link" block onClick={() => history.goBack()}>
+                            <span className="material-icons">arrow_left</span>
+                            Voltar
+                        </Button>
+
                     </Grid>
                 </Row>
                <SidebarProducts 
@@ -203,4 +201,4 @@ const mapStateToProps = state => ({
     ...state.reducerFolder
 }); 
 
-export default  connect(mapStateToProps)(GeneratorLink);
+export default  withRouter(connect(mapStateToProps)(GeneratorLink));

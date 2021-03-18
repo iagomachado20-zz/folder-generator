@@ -4,10 +4,9 @@ import { getToken } from './auth';
 axios.defaults.timeout = 3000;
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
-axios.defaults.headers.authorization = `Bearer ${getToken()}`; 
+// axios.defaults.headers.authorization = `Bearer ${localStorage.getItem('encart_auth')}`; 
 
-const BASE_URL = 'https://all-midias-encarte.herokuapp.com/';
-export const BASE_SERVER = 'https://allmidias.com.br/autoencarte/';
+const BASE_URL = 'http://emporiorosadas.com.br';
 
 const api = axios.create({
     baseURL: BASE_URL,
