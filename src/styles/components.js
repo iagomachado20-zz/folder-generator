@@ -57,6 +57,7 @@ export const Container = styled.div`
         }
         .row {
             display: flex;
+            margin: 0;
             justify-content: space-between;
             align-items: center;
         }
