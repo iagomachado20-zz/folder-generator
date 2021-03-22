@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Aside } from './style';
 
 const SidebarProducts = ({ products = [], onDelete }) => {
@@ -33,6 +33,11 @@ const SidebarProducts = ({ products = [], onDelete }) => {
                     )
                 })}
             </ul>
+            {
+                !products.length && (
+                    <p>Nenhum produto selecionado.</p>
+                )
+            }
         </Aside>
     )
 };  

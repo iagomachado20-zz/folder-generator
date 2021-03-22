@@ -11,6 +11,13 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-weight: 400;
         padding-top: 40px;
+        @media (max-width: 500px) {
+            padding-left: 10px;
+            padding-right: 10px;
+            h1 {
+                font-size: 1.7rem;
+            }
+        } 
     }
     .events-bt {
         display: flex;

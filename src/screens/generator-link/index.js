@@ -135,6 +135,9 @@ function GeneratorLink({ properties_folder, dispatch, history }) {
                         </Grid>
                     </Row>
                 </header>
+                <SidebarProducts 
+                products={productsList} 
+                onDelete={(list) => updateList(list)}/>
                 <Row>
                     <Grid size={12}>
                         <AutoComplete 
@@ -189,9 +192,7 @@ function GeneratorLink({ properties_folder, dispatch, history }) {
 
                     </Grid>
                 </Row>
-               <SidebarProducts 
-                products={productsList} 
-                onDelete={(list) => updateList(list)}/>     
+                    
             </Container>
         </React.Fragment>
     )

@@ -9,6 +9,7 @@ export const Aside = styled.aside`
     width: 300px;
     background-color: #fff;
     height: 100vh;
+    z-index: 2;
     box-shadow: -2px 3px 3px #0000000d;
     padding: 25px;
     box-sizing: border-box;
@@ -20,6 +21,14 @@ export const Aside = styled.aside`
     overflow-x: hidden;
     transition: all 0.4s ease;
     transform: translateX(100%);
+    @media (max-width: 600px) {
+        position: relative;
+        height: auto;
+        margin-bottom: 20px;
+        padding: 20px;
+        width: 100%;
+        transform: translateX(0%) !important;
+    }
     &.active {
         transform: translateX(0%);
     }
@@ -28,6 +37,7 @@ export const Aside = styled.aside`
         justify-content: space-between;
         align-items: center;
         padding-bottom: 10px;
+        width: 100%;
         border-bottom: 1px solid #ccc;
     }
     .bt-close {
@@ -43,15 +53,19 @@ export const Aside = styled.aside`
         height: 50px;
     }
     .list {
-        padding: 15px 0;
+        padding: 15px 0 0;
         list-style: none;
         width: 100%;
+        margin-bottom: 0;
         li {
             padding-bottom: 10px;
             font-size: 13px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            &:last-child {
+                padding-bottom: 0;
+            }
         }
         button {
             border: 0;
